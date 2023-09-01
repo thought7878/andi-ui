@@ -22,8 +22,10 @@ module.exports = {
 			},
 		],
 		["@babel/preset-react", { runtime: "automatic" }],
+		{ runtime: "automatic", importSource: "@emotion/react" },
 	],
 	plugins: [
+		"@emotion/babel-plugin",
 		[
 			"@babel/plugin-transform-typescript",
 			{
