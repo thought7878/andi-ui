@@ -4,11 +4,16 @@ import { render, screen } from "@testing-library/react";
 
 import Button from "../button";
 
-describe("Running Test for Marbella Button", () => {
+describe("Button", () => {
+	test("render correctly", () => {
+		render(<Button text="button" />);
+		expect(screen.getByText("button")).toBeInTheDocument();
+	});
+
 	test("Check Button Disabled", () => {
-		render(<Button text="Button marbella" disabled />);
+		render(<Button text="Disabled Button" disabled />);
 		expect(
-			screen.getByRole("button", { name: "Button marbella" })
+			screen.getByRole("button", { name: "Disabled Button" })
 		).toBeDisabled();
 	});
 });

@@ -6,7 +6,8 @@
     "build": "rollup -c --bundleConfigAsCjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "jest"
+    "test": "jest --watch",
+    "test:coverage": "jest --watch --coverage"
   },
   "author": "",
   "license": "ISC",
