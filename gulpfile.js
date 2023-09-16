@@ -66,10 +66,7 @@ function clean(done) {
 	done();
 }
 
-const compile = series(
-	clean,
-	parallel(compileToEs5, compileToEs6, compileCssToEs5, compileCssToEs6)
-);
+const compile = series(clean, parallel(compileToEs6, compileCssToEs6));
 
 module.exports = {
 	compile,
