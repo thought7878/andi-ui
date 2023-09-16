@@ -13,6 +13,7 @@
   ],
   "scripts": {
     "build": "gulp compile",
+    "clean": "gulp clean",
     "build:rollup": "rollup -c",
     "build:css": "gulp compileCss ",
     "storybook": "storybook dev -p 6006",
@@ -87,5 +88,9 @@
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "classnames": "^2.3.2",
+    "react-icons": "^4.11.0"
   }
 }

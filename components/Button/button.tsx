@@ -1,8 +1,7 @@
-import "./style/button.css";
-
 import { ButtonProps } from "./button.types";
 import React from "react";
 import { andiuiBtn } from "./style";
+import styles from "./style/button.css";
 
 const Button: React.FC<ButtonProps> = ({
 	size,
@@ -14,6 +13,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
 	return (
 		<button
+			className={styles.btn}
 			css={andiuiBtn}
 			type="button"
 			onClick={onClick}

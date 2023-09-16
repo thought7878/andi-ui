@@ -49,10 +49,15 @@ function compileToEs6() {
 	]);
 }
 
-function compileCss() {
+function compileCssToEs5() {
 	return src("./components/**/*.css", { base: "components" })
 		.pipe(postcss())
-		.pipe(dest("./dest"));
+		.pipe(dest(es5Path));
+}
+function compileCssToEs6() {
+	return src("./components/**/*.css", { base: "components" })
+		.pipe(postcss())
+		.pipe(dest(es6Path));
 }
 function clean(done) {
 	rimraf.sync(es5Path);
@@ -61,10 +66,13 @@ function clean(done) {
 	done();
 }
 
-const compile = series(clean, parallel(compileToEs5, compileToEs6));
+const compile = series(
+	clean,
+	parallel(compileToEs5, compileToEs6, compileCssToEs5, compileCssToEs6)
+);
 
 module.exports = {
 	compile,
-	compileCss,
+	// compileCss,
 	clean,
 };
