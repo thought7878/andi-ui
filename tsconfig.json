@@ -4,25 +4,27 @@
 		"strictNullChecks": true,
 		"strict": true,
 		"experimentalDecorators": true,
-		"skipLibCheck": true, //跳过了 declaration 文件的类型检查。这可以节省编译时间
-		"module": "ESNext", //表示我们将把代码编译成最新版本的 JavaScript（ES6 及以上版本，因此可以使用 import 语句
+		"skipLibCheck": true,
+		"module": "ESNext",
 		"declaration": true,
+		"emitDeclarationOnly": true,
+		"isolatedModules": true,
 		"declarationDir": "types",
 		"noUnusedParameters": true,
 		"noUnusedLocals": true,
-		"sourceMap": true, //告诉编译器我们想要生成源代码映射，源代码映射是一个将转换后的源代码，映射到原始源的文件，它使浏览器能够在调试器中呈现重建的原始源
+		"sourceMap": true,
 		"outDir": "dist",
 		"moduleResolution": "node",
-		"emitDeclarationOnly": true,
 		"allowSyntheticDefaultImports": true,
 		"forceConsistentCasingInFileNames": true,
 		"jsx": "react-jsx",
-		"jsxImportSource": "@emotion/react"
+		"jsxImportSource": "@emotion/react",
+		"allowJs": true
 	},
-	//告诉 TypeScript 避免转译指定的目录和文件，这样它就不会转译我们库的测试和故事
 	"exclude": [
 		"dist",
 		"lib",
+		"coverage",
 		"node_modules",
 		"src/**/*.test.tsx",
 		"src/**/*.stories.tsx"

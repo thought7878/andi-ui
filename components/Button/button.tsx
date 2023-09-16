@@ -1,5 +1,7 @@
-import React from "react";
+import "./style/button.css";
+
 import { ButtonProps } from "./button.types";
+import React from "react";
 import { andiuiBtn } from "./style";
 
 const Button: React.FC<ButtonProps> = ({
