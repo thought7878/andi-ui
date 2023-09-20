@@ -1,11 +1,10 @@
-
 ```tsx
-import  {Input}  from 'aui';
+import { Input } from "@andi/ui";
 
 export default () => (
-    <div style={{width:300}}>
-    Input 2
-        <Input/>
-    </div>
+	<div style={{ width: 300 }}>
+		Input 2
+		<Input />
+	</div>
 );
 ```

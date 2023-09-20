@@ -1,3 +1,5 @@
+import "./autoComplete.css";
+
 import Input, { InputProps } from "../Input/input";
 import React, {
 	ChangeEvent,
@@ -13,8 +15,6 @@ import { Spinner } from "../Spinner";
 import classNames from "classnames";
 import useClickOutside from "../hooks/useClickOutside";
 import useDebounce from "../hooks/useDebounce";
-
-// import "./index.css";
 
 //
 export interface DataSourceObject {

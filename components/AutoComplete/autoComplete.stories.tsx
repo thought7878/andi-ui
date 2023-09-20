@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import AutoComplete from "./";
+import AutoComplete from "./autoComplete";
 import React from "react";
 
 const autoCompleteMeta: ComponentMeta<typeof AutoComplete> = {
