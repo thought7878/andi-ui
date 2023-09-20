@@ -1,26 +1,41 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 
 import React from "react";
 import { Spinner } from ".";
 
-const spinnerMeta: ComponentMeta<typeof Spinner> = {
-	title: "Components/Spinner",
+const meta: Meta<typeof Spinner> = {
 	component: Spinner,
+	tags: ["autodocs"],
+	title: "Components/Spinner",
+	parameters: {
+		componentSubtitle: "Displays a spinner",
+	},
 };
-export default spinnerMeta;
+export default meta;
 
-//
-export const SpinnerWithDefault: ComponentStory<typeof Spinner> = (args) => {
-	return (
+type Story = StoryObj<typeof Spinner>;
+
+export const Primary: Story = {
+	name: "default",
+	render: () => (
 		<div className="w-[500px] ">
-			<Spinner {...args} />
+			<Spinner />
 		</div>
-	);
+	),
 };
-SpinnerWithDefault.storyName = "default";
 
 //
-export const SpinnerWithSize: ComponentStory<typeof Spinner> = (args) => {
+// export const SpinnerWithDefault: Story = (args) => {
+// 	return (
+// 		<div className="w-[500px] ">
+// 			<Spinner {...args} />
+// 		</div>
+// 	);
+// };
+// SpinnerWithDefault.storyName = "default";
+
+//
+export const SpinnerWithSize: Story = (args) => {
 	return (
 		<div className="text flex w-[80px] items-center justify-between">
 			<Spinner {...args} size="sm" />
@@ -32,8 +47,10 @@ export const SpinnerWithSize: ComponentStory<typeof Spinner> = (args) => {
 };
 SpinnerWithSize.storyName = "size";
 
-//
-export const SpinnerWithType: ComponentStory<typeof Spinner> = (args) => {
+/**
+ * 4 type is supported.
+ */
+export const SpinnerWithType: Story = (args) => {
 	return (
 		<div className="flex w-[80px] justify-between ">
 			<Spinner {...args} type="ring" />
@@ -44,7 +61,7 @@ export const SpinnerWithType: ComponentStory<typeof Spinner> = (args) => {
 SpinnerWithType.storyName = "type";
 
 //
-export const SpinnerWithColor: ComponentStory<typeof Spinner> = (args) => {
+export const SpinnerWithColor: Story = (args) => {
 	return (
 		<div className="flex w-[80px] justify-between ">
 			<Spinner {...args} />
@@ -56,9 +73,7 @@ export const SpinnerWithColor: ComponentStory<typeof Spinner> = (args) => {
 SpinnerWithColor.storyName = "color";
 
 //
-export const SpinnerWithCustomClass: ComponentStory<typeof Spinner> = (
-	args
-) => {
+export const SpinnerWithCustomClass: Story = (args) => {
 	return (
 		<div className="flex w-[80px] items-center justify-between ">
 			<Spinner {...args} className="text-[#a855f7]" />
@@ -70,7 +85,7 @@ export const SpinnerWithCustomClass: ComponentStory<typeof Spinner> = (
 SpinnerWithCustomClass.storyName = "custom color & size with className";
 
 //
-export const SpinnerWithCustom: ComponentStory<typeof Spinner> = (args) => {
+export const SpinnerWithCustom: Story = (args) => {
 	return (
 		<div className="flex w-[80px] items-center justify-between ">
 			<Spinner {...args} style={{ color: "#a855f7" }} />

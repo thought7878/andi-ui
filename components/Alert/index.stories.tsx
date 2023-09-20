@@ -6,6 +6,7 @@ import React from "react";
 const alertMeta: ComponentMeta<typeof Alert> = {
 	title: "Components/Alert",
 	component: Alert,
+	tags: ["autodocs"],
 };
 export default alertMeta;
 
