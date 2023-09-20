@@ -1,9 +1,13 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+
 import AutoComplete from "./";
+import React from "react";
 
 const autoCompleteMeta: ComponentMeta<typeof AutoComplete> = {
-	title: "AutoComplete",
+	title: "Components/AutoComplete",
 	component: AutoComplete,
+	tags: ["autodocs"],
+
 	// argTypes: { onSelect: { action: "selected value" } },
 };
 export default autoCompleteMeta;

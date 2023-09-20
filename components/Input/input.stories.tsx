@@ -1,10 +1,13 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+
 import { BiDownload } from "react-icons/bi";
-import Input from "./";
+import Input from "./input";
+import React from "react";
 
 const inputMeta: ComponentMeta<typeof Input> = {
-	title: "input",
+	title: "Components/Input",
 	component: Input,
+	tags: ["autodocs"],
 };
 export default inputMeta;
 

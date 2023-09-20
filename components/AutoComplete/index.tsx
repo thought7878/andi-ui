@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import Input, { InputProps } from "../Input/input";
 import React, {
 	ChangeEvent,
 	KeyboardEvent,
@@ -7,11 +7,12 @@ import React, {
 	useRef,
 	useState,
 } from "react";
+
 import { CSSTransition } from "react-transition-group";
-import useClickOutside from "../../hooks/useClickOutside";
-import useDebounce from "../../hooks/useDebounce";
-import Input, { InputProps } from "../Input";
-import Spinner from "../Spinner";
+import { Spinner } from "../Spinner";
+import classNames from "classnames";
+import useClickOutside from "../hooks/useClickOutside";
+import useDebounce from "../hooks/useDebounce";
 
 // import "./index.css";
 

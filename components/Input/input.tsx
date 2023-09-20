@@ -1,6 +1,7 @@
-import classNames from "classnames";
+import "./input.css";
+
 import React from "react";
-// import "./index.css";
+import classNames from "classnames";
 
 type InputSize = "lg" | "sm";
 
