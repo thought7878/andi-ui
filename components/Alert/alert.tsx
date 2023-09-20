@@ -1,10 +1,11 @@
+import "./index.css";
+
 import { FC, ReactNode, useEffect, useState } from "react";
 
 import { CSSTransition } from "react-transition-group";
 import { Icon } from "../Icon";
 import { IoClose } from "react-icons/io5";
 import classNames from "classnames";
-// import "./index.css";
 
 export interface AlertProps extends React.HTMLAttributes<HTMLElement> {
 	/**4 types */

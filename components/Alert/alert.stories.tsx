@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import Alert from "./";
+import Alert from "./alert";
 import React from "react";
 
 const alertMeta: ComponentMeta<typeof Alert> = {
