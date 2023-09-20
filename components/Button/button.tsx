@@ -5,9 +5,6 @@ import React from "react";
 import { Spinner } from "../Spinner";
 import classNames from "classnames";
 
-// import styles from "./style/button.module.css";
-// import "./index.css";
-
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLElement> {
 	className?: string;
 	/**Set type */
