@@ -1,0 +1,43 @@
+.alert {
+	@apply flex items-center justify-between rounded-lg  py-4 px-4 text-base text-white;
+}
+
+.primary {
+	@apply bg-primary;
+}
+.success {
+	@apply bg-success;
+}
+.danger {
+	@apply bg-danger;
+}
+.warning {
+	@apply bg-warning;
+}
+.right-top {
+	@apply fixed right-8 top-8 z-[100];
+}
+.right-bottom {
+	@apply fixed right-8 bottom-8 z-[100];
+}
+.left-top {
+	@apply fixed left-8 top-8 z-[100];
+}
+.left-bottom {
+	@apply fixed left-8 bottom-8 z-[100];
+}
+
+.aui-show-hide-enter {
+	opacity: 0;
+}
+.aui-show-hide-enter-active {
+	opacity: 1;
+	transition: opacity 200ms;
+}
+.aui-show-hide-exit {
+	opacity: 1;
+}
+.aui-show-hide-exit-active {
+	opacity: 0;
+	transition: opacity 200ms;
+}
