@@ -1,0 +1,41 @@
+/* TODO: unfinished tailwind */
+.aui-input-wrapper {
+	.icon-wrapper {
+		svg {
+			@apply text-gray-400;
+		}
+	}
+}
+.aui-input {
+	@apply w-full rounded-md border border-solid border-auiLight-border 
+        bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-auiLight-primary shadow-sm transition-all duration-300 ease-in-out placeholder:text-auiLight-secondary  
+        read-only:cursor-not-allowed read-only:bg-auiLight-black15 
+        hover:border-primary focus:border-primary focus:shadow-primary focus:outline-0  
+        disabled:cursor-not-allowed disabled:border-auiLight-border disabled:bg-auiLight-black15 disabled:shadow-none;
+}
+.icon-wrapper + .aui-input {
+	padding-right: 35px;
+}
+.input-suffix-wrapper + .btn {
+	padding: 0;
+	border: 0;
+}
+.input-group > .input-prefix-wrapper,
+.input-group.input-group-suffix > .aui-input {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.input-group > .input-suffix-wrapper,
+.input-group.input-group-prefix > .aui-input {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.input-size-sm .aui-input {
+	@apply rounded-md px-2 py-1 text-sm;
+}
+
+.input-size-lg .aui-input {
+	@apply px-4 py-2 text-lg;
+}
