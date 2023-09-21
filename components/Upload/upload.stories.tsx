@@ -1,11 +1,13 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+
 import { AiOutlineCloudUpload } from "react-icons/ai";
-import Button from "../Button";
-import Icon from "../Icon";
-import Upload from "./";
+import { Button } from "../Button";
+import { Icon } from "../Icon";
+import React from "react";
+import Upload from "./upload";
 
 const uploadMeta: ComponentMeta<typeof Upload> = {
-	title: "Upload 0.8",
+	title: "Components/Upload 0.8",
 	component: Upload,
 	args: {
 		// onBeforeUpload: () => {
