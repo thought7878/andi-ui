@@ -1,9 +1,12 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Space from "./";
+
+import React from "react";
+import { Space } from "./";
 
 const spaceMeta: ComponentMeta<typeof Space> = {
-	title: "Space",
+	title: "Components/Space",
 	component: Space,
+	tags: ["autodocs"],
 };
 export default spaceMeta;
 
