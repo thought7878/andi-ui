@@ -1,0 +1,19 @@
+.link {
+	@apply cursor-pointer px-3 py-1.5 text-base text-auiLight-black85 transition-all duration-300
+  ease-in-out hover:text-primary hover:underline;
+
+	&.disabled {
+		@apply cursor-not-allowed opacity-70;
+		> * {
+			pointer-events: none;
+		}
+	}
+}
+
+.link-lg {
+	@apply px-4 py-2 text-lg;
+}
+
+.link-sm {
+	@apply px-2 py-1 text-sm;
+}
