@@ -1,9 +1,12 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Progress from "./";
+
+import { Progress } from "./";
+import React from "react";
 
 const progressMeta: ComponentMeta<typeof Progress> = {
-	title: "Progress",
+	title: "Components/Progress",
 	component: Progress,
+	tags: ["autodocs"],
 };
 export default progressMeta;
 

@@ -1,3 +1,5 @@
+import "./progress.css";
+
 import { FC } from "react";
 
 export interface ProgressProps {
