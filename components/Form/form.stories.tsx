@@ -9,9 +9,10 @@ import React from "react";
 import { useRef } from "react";
 
 const formMeta: ComponentMeta<typeof Form> = {
-	title: "Form 0.8",
+	title: "Components/Form 0.8",
 	component: Form,
 	subcomponents: { "Form.Item": Form.Item },
+	tags: ["autodocs"],
 	argTypes: {},
 	parameters: {
 		docs: {

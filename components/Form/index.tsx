@@ -3,6 +3,9 @@ import Item, { ItemProps } from "./item";
 import { FC } from "react";
 import InternalForm from "./form";
 
+export type { ItemProps } from "./item";
+export type { InternalFormProps as FormProps } from "./form";
+
 export type InternalFormType = typeof InternalForm;
 
 export type CompoundedFormType = InternalFormType & {
