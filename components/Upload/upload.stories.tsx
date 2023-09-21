@@ -9,6 +9,7 @@ import Upload from "./upload";
 const uploadMeta: ComponentMeta<typeof Upload> = {
 	title: "Components/Upload 0.8",
 	component: Upload,
+	tags: ["autodocs"],
 	args: {
 		// onBeforeUpload: () => {
 		// 	return true;

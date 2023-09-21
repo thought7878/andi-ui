@@ -5,10 +5,10 @@ import {
 } from "react-icons/ai";
 
 import { FC } from "react";
-import Icon from "../Icon";
+import { Icon } from "../Icon";
 import { IoMdClose } from "react-icons/io";
-import Progress from "../Progress";
-import Spinner from "../Spinner";
+import { Progress } from "../Progress";
+import { Spinner } from "../Spinner";
 import { UploadFile } from "./upload";
 
 export interface UploadFileListProps {
