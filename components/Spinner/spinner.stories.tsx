@@ -48,7 +48,7 @@ export const SpinnerWithSize: Story = (args) => {
 SpinnerWithSize.storyName = "size";
 
 /**
- * 4 type is supported.
+ * 2 type is supported.
  */
 export const SpinnerWithType: Story = (args) => {
 	return (

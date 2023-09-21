@@ -4,7 +4,7 @@ import { FaSpinner } from "react-icons/fa";
 import { Icon } from "../Icon";
 import classNames from "classnames";
 
-interface SpinnerProps {
+export interface SpinnerProps {
 	/**Setting size */
 	size?: "sm" | "md" | "lg" | "xl";
 	/**Setting type */
