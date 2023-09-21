@@ -1,0 +1,77 @@
+.aui-menu {
+	@apply mb-0 flex list-none flex-wrap pl-0;
+
+	.menu-item {
+		@apply cursor-pointer py-[0.5rem] px-[1rem] transition-all
+    hover:border-b-2 hover:border-solid hover:border-primary hover:text-primary hover:no-underline 
+    focus:no-underline;
+
+		&.is-disabled {
+			@apply pointer-events-none cursor-default text-auiLight-black15;
+		}
+		&.is-active {
+			@apply border-b-2 border-solid border-primary text-primary;
+		}
+	}
+
+	.submenu-item {
+		@apply relative;
+
+		.submenu-title {
+			@apply flex items-center;
+		}
+		.arrow-icon {
+			@apply ml-[3px] transition-transform duration-300;
+		}
+		&:hover {
+			.arrow-icon {
+				transform: rotate(180deg);
+			}
+		}
+	}
+	.is-vertical {
+		.arrow-icon {
+			transform: rotate(0deg) !important;
+		}
+	}
+	.is-vertical.is-opened {
+		.arrow-icon {
+			transform: rotate(180deg) !important;
+		}
+	}
+	.aui-submenu {
+		@apply list-none whitespace-nowrap pl-0;
+
+		.menu-item {
+			@apply cursor-pointer border-b-2 border-solid border-transparent py-2 px-4 text-auiLight-title
+      transition-all
+      hover:text-primary;
+
+			&.is-active {
+				@apply text-primary;
+			}
+		}
+	}
+}
+.menu-horizontal {
+	> .menu-item {
+		@apply border-b-2 border-solid border-transparent;
+	}
+	.aui-submenu {
+		@apply absolute left-0  z-[100] border border-solid border-auiLight-border bg-white shadow-md;
+
+		top: calc(100% + 2px);
+	}
+}
+.menu-vertical {
+	@apply flex-col border-b-0;
+
+	> .menu-item {
+		@apply border-l-2 border-solid border-transparent 
+    hover:border-b-0 hover:border-primary;
+
+		&.is-active {
+			@apply border-b-0 border-primary;
+		}
+	}
+}
