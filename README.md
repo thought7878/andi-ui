@@ -1,14 +1,16 @@
-import { Meta } from "@storybook/blocks";
+## 介绍
 
-<Meta title="开始/安装" />
+@andi/ui 是基于 React 的 UI 组件库，主要用于研发企业级中后台产品。
 
 ## 安装
 
 - 使用 npm 或 yarn 安装
 
+```
 npm install ant --save
 
 yarn add ant
+```
 
 ## 浏览器引入
 
