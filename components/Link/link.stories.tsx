@@ -1,9 +1,12 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Link from ".";
+
+import { Link } from ".";
+import React from "react";
 
 const linkMeta: ComponentMeta<typeof Link> = {
-	title: "Link",
+	title: "Components/Link",
 	component: Link,
+	tags: ["autodocs"],
 };
 export default linkMeta;
 
