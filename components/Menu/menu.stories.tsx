@@ -1,12 +1,14 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Menu from "./";
+
+import Menu from ".";
 
 const menuMeta: ComponentMeta<typeof Menu> = {
-	title: "Menu 0.8",
+	title: "Components/Menu 0.8",
 	// id: "Menu",
 	component: Menu,
 	subcomponents: { Submenu: Menu.Submenu, Item: Menu.Item },
 	args: { defaultIndex: "1" },
+	tags: ["autodocs"],
 	argTypes: {
 		defaultIndex: {
 			// control: "color",

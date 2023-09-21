@@ -1,7 +1,9 @@
-import classNames from "classnames";
+import "./menu.css";
+
 import React, { createContext, useState } from "react";
-// import "./index.css";
+
 import { MenuItemProps } from "./menuItem";
+import classNames from "classnames";
 
 //
 export type HandleSelect = (selectedIndex: string) => void;
