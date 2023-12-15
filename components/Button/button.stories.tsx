@@ -9,7 +9,9 @@ const meta: Meta<typeof Button> = {
   // tags: ["autodocs"],
   title: "Components/Button",
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    onClick: () => console.log("clicked!"),
+  },
 };
 export default meta;
 
