@@ -18,7 +18,9 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "jest --watch",
-    "test:coverage": "jest --watch --coverage"
+    "test:coverage": "jest --watch --coverage",
+    "lint": "eslint . --ext .ts,.tsx --ignore-path .gitignore --fix",
+    "format": "prettier --write --parser typescript '**/*.{ts,tsx}'"
   },
   "author": "",
   "license": "ISC",

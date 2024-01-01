@@ -1,27 +1,27 @@
-import './style/button.css'
+import './style/button.css';
 
-import { Icon } from '../Icon'
-import React from 'react'
-import { Spinner } from '../Spinner'
-import classNames from 'classnames'
+import { Icon } from '../Icon';
+import React from 'react';
+import { Spinner } from '../Spinner';
+import classNames from 'classnames';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLElement> {
-  className?: string
+  className?: string;
   /** Set type */
-  btnType?: 'primary' | 'default' | 'danger'
+  btnType?: 'primary' | 'default' | 'danger';
   /** Set size */
-  size?: 'lg' | 'md' | 'sm'
+  size?: 'lg' | 'md' | 'sm';
   /** Set disabled */
-  disabled?: boolean
+  disabled?: boolean;
   /** Set left icon */
-  leftIcon?: React.ReactElement
+  leftIcon?: React.ReactElement;
   /** Set right icon */
-  rightIcon?: React.ReactElement
+  rightIcon?: React.ReactElement;
   // TODO: style bug
   /** Set loading */
-  loading?: boolean
+  loading?: boolean;
 
-  children: React.ReactNode
+  children: React.ReactNode;
   // icon?: IconProp;
 }
 
@@ -45,7 +45,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
     size,
     children,
     ...otherProps
-  } = props
+  } = props;
   // btn,btn-lg,btn-primary
   const classes = classNames(
     'btn',
@@ -55,7 +55,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
       disabled: disabled || loading,
     },
     className,
-  )
+  );
 
   //
   return (
@@ -67,12 +67,12 @@ export const Button: React.FC<ButtonProps> = (props) => {
         {rightIcon && <Icon icon={rightIcon} className="ml-1" />}
       </button>
     </div>
-  )
-}
+  );
+};
 //
 Button.defaultProps = {
   disabled: false,
   btnType: 'default',
   size: 'md',
-}
-export default Button
+};
+export default Button;

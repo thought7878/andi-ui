@@ -1,28 +1,31 @@
 {
+  // Specify the environments where the code will run
   "env": {
-    "browser": true,
-    "es2021": true
+    "jest": true, // Enable Jest for testing
+    "browser": true // Enable browser environment
   },
+
+  // Stop ESLint from searching for configuration in parent folders
+  "root": true,
+
+  // Specify the parser for TypeScript (using @typescript-eslint/parser)
+  "parser": "@typescript-eslint/parser", // Leverages TS ESTree to lint TypeScript
+
+  // Add additional rules and configuration options
+  "plugins": ["@typescript-eslint"],
+
+  // Extend various ESLint configurations and plugins
   "extends": [
-    "standard-with-typescript",
-    "plugin:react/recommended",
-    "plugin:prettier/recommended"
+    "eslint:recommended", // ESLint recommended rules
+    "plugin:react/recommended", // React recommended rules
+    "plugin:@typescript-eslint/recommended", // TypeScript recommended rules
+    "plugin:@typescript-eslint/eslint-recommended", // ESLint overrides for TypeScript
+    "prettier", // Prettier rules
+    "plugin:prettier/recommended", // Prettier plugin integration
+    "plugin:react-hooks/recommended", // Recommended rules for React hooks
+    "plugin:storybook/recommended" // Recommended rules for Storybook
   ],
-  "overrides": [
-    {
-      "env": {
-        "node": true
-      },
-      "files": [".eslintrc.{js,cjs}"],
-      "parserOptions": {
-        "sourceType": "script"
-      }
-    }
-  ],
-  "parserOptions": {
-    "ecmaVersion": "latest"
-    // sourceType: 'module',
-  },
-  "plugins": ["react", "prettier"],
-  "rules": {}
+  "rules": {
+    "react/react-in-jsx-scope": "off"
+  }
 }
