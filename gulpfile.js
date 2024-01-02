@@ -1,3 +1,13 @@
+// import rimraf from "rimraf";
+// import path from "path";
+// import { src, dest, parallel, series } from "gulp";
+// import babel from "gulp-babel";
+// import ts from "gulp-typescript";
+// import merge from "merge2";
+// import babelConfig from "./babel.config.js";
+// import { compilerOptions } from "./tsconfig.json";
+// import postcss from "gulp-postcss";
+
 const rimraf = require("rimraf");
 const path = require("path");
 const { src, dest, parallel, series } = require("gulp");
