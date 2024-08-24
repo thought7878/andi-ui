@@ -60,6 +60,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@andi-ui/number-input':
+        specifier: workspace:*
+        version: link:../../packages/number-input
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -120,6 +123,15 @@ importers:
         version: 1.1.0
       typescript:
         specifier: ^5.5.4
+        version: 5.5.4
+
+  packages/number-input:
+    devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      typescript:
+        specifier: latest
         version: 5.5.4
 
   packages/typescript-config: {}
