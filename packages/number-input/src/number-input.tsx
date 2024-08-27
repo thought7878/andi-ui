@@ -40,7 +40,7 @@ const numberFieldVariants = cva("", {
 
 interface NumberFieldContextValue {
   numberFieldProps: NumberFieldAria;
-  inputRef?: React.RefObject<HTMLInputElement | null>;
+  inputRef?: React.RefObject<HTMLInputElement>;
   btnPosition?: 'inside' | 'outside';
   labelPosition?: 'left' | 'top';
 }
@@ -224,6 +224,54 @@ const NumberFieldDecrement = React.forwardRef<
   );
 });
 NumberFieldDecrement.displayName = 'NumberFieldDecrement';
+
+type NumberFieldInputProps = { className?: string };
+const NumberFieldInput = React.forwardRef<
+  HTMLInputElement,
+  NumberFieldInputProps
+>(({ className }, ref) => {
+  const {
+    numberFieldProps: { inputProps },
+    inputRef,
+  } = useNumberFieldContext();
+
+  React.useEffect(() => {
+    if (ref && 'current' in ref && inputRef?.current) {
+      ref.current = inputRef?.current;
+    }
+  }, [inputRef, ref]);
+
+  return (
+    <input
+      ref={inputRef}
+      type='number'
+      className={cn(
+        'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+        className
+      )}
+      {...inputProps}
+    />
+  );
+});
+NumberFieldInput.displayName = 'NumberFieldInput';
+
+export {
+  NumberField,
+  NumberFieldGroup,
+  NumberFieldLabel,
+  NumberFieldDecrement,
+  NumberFieldIncrement,
+  NumberFieldInput,
+};
+
+export type {
+  NumberFieldProps,
+  NumberFieldGroupProps,
+  NumberFieldLabelProps,
+  NumberFieldDecrementProps,
+  NumberFieldIncrementProps,
+  NumberFieldInputProps,
+};
 
 type ButtonProps = AriaButtonOptions<React.ElementType> & {
   children: React.ReactNode;
