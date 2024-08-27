@@ -3,8 +3,10 @@
 import * as React from 'react';
 // import { Input, InputProps } from '@/components/ui/input';
 import {
+  AriaButtonOptions,
   AriaNumberFieldProps,
   type NumberFieldAria,
+  useButton,
   useLocale,
   useNumberField,
 } from 'react-aria';
@@ -160,3 +162,57 @@ const NumberFieldLabel = React.forwardRef<
   );
 });
 NumberFieldLabel.displayName = 'NumberFieldLabel';
+
+type NumberFieldIncrementProps = {
+  className?: string;
+  children: React.ReactNode;
+};
+const NumberFieldIncrement = React.forwardRef<
+  HTMLButtonElement,
+  NumberFieldIncrementProps
+>(({ className, children }, ref) => {
+  const {
+    numberFieldProps: { incrementButtonProps },
+    btnPosition,
+  } = useNumberFieldContext();
+
+  return (
+    <Button
+      {...incrementButtonProps}
+      className={cn(
+        'z-10 rounded-md bg-primary text-primary-foreground transition-all enabled:hover:bg-primary/60 disabled:cursor-not-allowed disabled:opacity-50',
+        btnPosition === 'outside'
+          ? 'px-3 py-2'
+          : 'absolute right-0 top-0 flex h-5 w-5 items-center justify-center rounded-b-none p-0 focus-visible:outline-none',
+        className
+      )}
+      ref={ref}
+    >
+      {children}
+    </Button>
+  );
+});
+NumberFieldIncrement.displayName = 'NumberFieldIncrement';
+
+type ButtonProps = AriaButtonOptions<React.ElementType> & {
+  children: React.ReactNode;
+  className?: string;
+  ref?: React.RefObject<HTMLButtonElement | null>;
+};
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, ...props }, ref) => {
+    let { buttonProps } = useButton(
+      props,
+      ref as React.RefObject<HTMLButtonElement | null>
+    );
+
+    return (
+      <button {...buttonProps} ref={ref} className={className}>
+        {props.children}
+      </button>
+    );
+  }
+);
+
+Button.displayName = 'Button';
