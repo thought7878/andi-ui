@@ -6,6 +6,10 @@
     "build": "tsc"
   },
   "exports": {
+    ".": {
+      "types": "./src/number-input.tsx",
+      "default": "./src/number-input.tsx"
+    },
     "./add": {
       "types": "./src/add.ts",
       "default": "./src/add.ts"
@@ -21,9 +25,11 @@
   },
   "dependencies": {
     "@types/react": "^18.3.4",
+    "clsx": "^2.1.1",
     "react": "^18.3.1",
     "react-aria": "^3.34.3",
     "react-dom": "^18.3.1",
-    "react-stately": "^3.32.2"
+    "react-stately": "^3.32.2",
+    "tailwind-merge": "^2.5.2"
   }
 }

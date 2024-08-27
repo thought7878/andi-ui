@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-// import { Input, InputProps } from '@/components/ui/input';
 import {
   AriaButtonOptions,
   AriaNumberFieldProps,
@@ -10,33 +9,9 @@ import {
   useLocale,
   useNumberField,
 } from 'react-aria';
-import {
-  type NumberFieldState,
-  NumberFieldStateOptions,
-  useNumberFieldState,
-} from 'react-stately';
-// import { Button, ButtonProps } from "@/components/ui/button";
-// import Button, { ButtonProps } from '@/components/ui/button-aria';
+import { NumberFieldStateOptions, useNumberFieldState } from 'react-stately';
 
-// TODO: bug, "moduleResolution": "Bundler",
 import { cn } from './lib/utils';
-/* 
-const numberFieldVariants = cva("", {
-  variants: {
-    variant: {
-      inside: "",
-      outside: "",
-    },
-    size: {
-      default: "",
-    },
-  },
-  defaultVariants: {
-    variant: "inside",
-    size: "default",
-  },
-});
- */
 
 interface NumberFieldContextValue {
   numberFieldProps: NumberFieldAria;
@@ -257,20 +232,20 @@ NumberFieldInput.displayName = 'NumberFieldInput';
 
 export {
   NumberField,
-  NumberFieldGroup,
-  NumberFieldLabel,
   NumberFieldDecrement,
+  NumberFieldGroup,
   NumberFieldIncrement,
   NumberFieldInput,
+  NumberFieldLabel,
 };
 
 export type {
-  NumberFieldProps,
-  NumberFieldGroupProps,
-  NumberFieldLabelProps,
   NumberFieldDecrementProps,
+  NumberFieldGroupProps,
   NumberFieldIncrementProps,
   NumberFieldInputProps,
+  NumberFieldLabelProps,
+  NumberFieldProps,
 };
 
 type ButtonProps = AriaButtonOptions<React.ElementType> & {

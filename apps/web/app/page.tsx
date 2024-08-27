@@ -1,15 +1,14 @@
 import Image from 'next/image';
-import { Button } from '@repo/ui/button';
 import styles from './page.module.css';
-import { add } from '@andi-ui/number-input/add';
-import { subtract } from '@andi-ui/number-input/subtract';
+// import { add } from '@andi-ui/number-input/add';
+// import { subtract } from '@andi-ui/number-input/subtract';
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <div>add(1, 57): {add(1, 57)}</div>
-        <div>subtract(1, 57): {subtract(1, 57)}</div>
+        {/* <div>add(1, 57): {add(1, 57)}</div>
+        <div>subtract(1, 57): {subtract(1, 57)}</div> */}
       </main>
       <footer className={styles.footer}>
         <a
