@@ -11,36 +11,20 @@ import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 export default function Page() {
   return (
     <div className='pt-10 flex justify-center items-center h-screen'>
-      <NumberField>
-        <NumberFieldLabel>Amount: </NumberFieldLabel>
+      <NumberField label='Amount' labelPosition='top'>
+        <NumberFieldLabel className='text-blue-500 text-lg'>
+          Amount:
+        </NumberFieldLabel>
         <NumberFieldGroup>
           <NumberFieldIncrement>
-            {/* ChevronUpIcon from 'lucide-react' */}
-            <ChevronUpIcon className='' />
+            <ChevronUpIcon />
           </NumberFieldIncrement>
           <NumberFieldInput />
           <NumberFieldDecrement>
-            {/* ChevronDownIcon from 'lucide-react' */}
-            <ChevronDownIcon className='' />
+            <ChevronDownIcon />
           </NumberFieldDecrement>
         </NumberFieldGroup>
       </NumberField>
     </div>
   );
 }
-/* 
-
-<NumberField>
-  <NumberFieldLabel>Amount: </NumberFieldLabel>
-  <NumberFieldGroup>
-    <NumberFieldIncrement>
-      <ChevronUpIcon />
-    </NumberFieldIncrement>
-    <NumberFieldInput />
-    <NumberFieldDecrement>
-      <ChevronDownIcon />
-    </NumberFieldDecrement>
-  </NumberFieldGroup>
-</NumberField>;
-
- */

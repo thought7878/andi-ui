@@ -14,33 +14,17 @@ export default function Page() {
       <NumberField>
         <NumberFieldLabel>Amount: </NumberFieldLabel>
         <NumberFieldGroup>
-          <NumberFieldIncrement>
-            {/* ChevronUpIcon from 'lucide-react' */}
-            <ChevronUpIcon className='' />
+          <NumberFieldIncrement className='bg-blue-500'>
+            {/* customize the increment button's icon */}
+            <ChevronUpIcon />
           </NumberFieldIncrement>
           <NumberFieldInput />
-          <NumberFieldDecrement>
-            {/* ChevronDownIcon from 'lucide-react' */}
-            <ChevronDownIcon className='' />
+          <NumberFieldDecrement className='bg-blue-500'>
+            {/* customize the decrement button's icon */}
+            <ChevronDownIcon />
           </NumberFieldDecrement>
         </NumberFieldGroup>
       </NumberField>
     </div>
   );
 }
-/* 
-
-<NumberField>
-  <NumberFieldLabel>Amount: </NumberFieldLabel>
-  <NumberFieldGroup>
-    <NumberFieldIncrement>
-      <ChevronUpIcon />
-    </NumberFieldIncrement>
-    <NumberFieldInput />
-    <NumberFieldDecrement>
-      <ChevronDownIcon />
-    </NumberFieldDecrement>
-  </NumberFieldGroup>
-</NumberField>;
-
- */
