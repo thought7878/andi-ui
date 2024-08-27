@@ -109,3 +109,54 @@ const NumberField = React.forwardRef<HTMLDivElement, NumberFieldProps>(
   }
 );
 NumberField.displayName = 'NumberField';
+
+type NumberFieldGroupProps = {
+  className?: string;
+  children: React.ReactNode;
+};
+const NumberFieldGroup = React.forwardRef<
+  HTMLDivElement,
+  NumberFieldGroupProps
+>(({ className, children }, ref) => {
+  const {
+    numberFieldProps: { groupProps },
+  } = useNumberFieldContext();
+  return (
+    <div
+      ref={ref}
+      className={cn('relative flex gap-1', className)}
+      {...groupProps}
+    >
+      {children}
+    </div>
+  );
+});
+NumberFieldGroup.displayName = 'NumberFieldGroup';
+
+type NumberFieldLabelProps = {
+  className?: string;
+  children: React.ReactNode;
+};
+const NumberFieldLabel = React.forwardRef<
+  HTMLLabelElement,
+  NumberFieldLabelProps
+>(({ className, children }, ref) => {
+  const {
+    numberFieldProps: { labelProps },
+    labelPosition,
+  } = useNumberFieldContext();
+
+  return (
+    <label
+      ref={ref}
+      {...labelProps}
+      className={cn(
+        labelPosition === 'left' ? 'flex items-center justify-center' : '',
+        className
+      )}
+    >
+      {children}
+    </label>
+  );
+});
+NumberFieldLabel.displayName = 'NumberFieldLabel';
