@@ -12,16 +12,16 @@ export default function Page() {
   return (
     <div className='pt-10 flex justify-center items-center h-screen'>
       <NumberField>
-        <NumberFieldLabel>Count: </NumberFieldLabel>
+        <NumberFieldLabel>Amount: </NumberFieldLabel>
         <NumberFieldGroup>
           <NumberFieldIncrement>
             {/* ChevronUpIcon from 'lucide-react' */}
-            <ChevronUpIcon className='h-4 w-4' />
+            <ChevronUpIcon className='' />
           </NumberFieldIncrement>
           <NumberFieldInput />
           <NumberFieldDecrement>
             {/* ChevronDownIcon from 'lucide-react' */}
-            <ChevronDownIcon className='h-4 w-4' />
+            <ChevronDownIcon className='' />
           </NumberFieldDecrement>
         </NumberFieldGroup>
       </NumberField>
