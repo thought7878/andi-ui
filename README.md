@@ -1,6 +1,6 @@
 # Turborepo starter
 
-This is an official starter Turborepo.
+This is an UI Libary.
 
 ## Using this example
 
