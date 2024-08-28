@@ -107,6 +107,29 @@ If a valid range is known ahead of time, it is a good idea to provide it to Numb
 
 ![input](./apps/web/public/input.png)
 
+### Behavior
+
+<!-- TODO: update Props link -->
+
+NumberField accepts an `onChange` prop which is triggered whenever the value is committed by the user. This happens on blur of the field or on interaction with the stepper functionality, arrow keys or stepper buttons. For a full list of supported events, see the [Props ](https://react-spectrum.adobe.com/react-spectrum/NumberField.html#props) table below.
+
+```tsx
+let [value, setValue] = React.useState(0);
+
+<NumberField label='Amount' onChange={setValue} minValue={0}>
+  <NumberFieldLabel>Amount: </NumberFieldLabel>
+  <NumberFieldGroup>
+    <NumberFieldIncrement>
+      <ChevronUpIcon />
+    </NumberFieldIncrement>
+    <NumberFieldInput />
+    <NumberFieldDecrement>
+      <ChevronDownIcon />
+    </NumberFieldDecrement>
+  </NumberFieldGroup>
+</NumberField>;
+```
+
 ### Formatting
 
 ## Label
