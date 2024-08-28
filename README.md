@@ -48,6 +48,8 @@
 
 ### Customize Increment & Decrement Buttons
 
+#### Style
+
 ```tsx
 <NumberField>
   <NumberFieldLabel>Amount: </NumberFieldLabel>
@@ -69,6 +71,27 @@
 
 ![button](./apps/web/public/button.png)
 
+#### Position
+
 ### Customize Input
+
+#### Style
+
+```tsx
+<NumberField>
+  <NumberFieldLabel>Amount: </NumberFieldLabel>
+  <NumberFieldGroup>
+    <NumberFieldIncrement>
+      <ChevronUpIcon />
+    </NumberFieldIncrement>
+    <NumberFieldInput className='border-blue-500 w-[500px]' />
+    <NumberFieldDecrement>
+      <ChevronDownIcon />
+    </NumberFieldDecrement>
+  </NumberFieldGroup>
+</NumberField>
+```
+
+![input](./apps/web/public/input.png)
 
 # API Reference
