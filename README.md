@@ -37,10 +37,8 @@ A NumberField's `value` is empty by default, but an initial, uncontrolled, val
 - `maxValue`: The largest value allowed for the input.
 
 ```tsx
-let [value, setValue] = React.useState(15);
+    let [value, setValue] = React.useState(15);
 
-return (
-  <div className='pt-10 flex flex-col pl-10 gap-8 h-screen'>
     <NumberField label='defaultValue' defaultValue={8}>
       <NumberFieldLabel>defaultValue: </NumberFieldLabel>
       <NumberFieldGroup>
@@ -66,17 +64,29 @@ return (
         </NumberFieldDecrement>
       </NumberFieldGroup>
     </NumberField>
-  </div>
-);
+
 ```
 
-#### Minimum and maximum values
+#### Minimum and Maximum and Step
 
 The minValue and maxValue props can be used to limit the entered value to a specific range. The value will be clamped when the user blurs the input field. In addition, the increment and decrement buttons will be disabled when the value is within one step value from the bounds. Ranges can be open ended by only providing either minValue or maxValue rather than both.
 
 If a valid range is known ahead of time, it is a good idea to provide it to NumberField so it can optimize the experience. For example, when the minimum value is greater than or equal to zero, it is possible to use a numeric keyboard on iOS rather than a full text keyboard (necessary to enter a minus sign).
 
-#### Step values
+```tsx
+<NumberField label='min-max' minValue={0} maxValue={10} step={3}>
+  <NumberFieldLabel>min-max: </NumberFieldLabel>
+  <NumberFieldGroup>
+    <NumberFieldIncrement>
+      <ChevronUpIcon />
+    </NumberFieldIncrement>
+    <NumberFieldInput />
+    <NumberFieldDecrement>
+      <ChevronDownIcon />
+    </NumberFieldDecrement>
+  </NumberFieldGroup>
+</NumberField>
+```
 
 ### Style
 
