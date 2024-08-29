@@ -12,28 +12,29 @@ export default function Page() {
   return (
     <div>
       <NumberField
-        // defaultValue={18}
-        placeholder='*number input*'
-        isWheelDisabled
-        // label="btnPosition: inside"
-        // labelPosition="top"
-        // btnPosition="inside"
-        onChange={(v) => {
-          console.log('onChange');
-        }}
-        // name
-        // step={8} //bug：defaultValue={18},显示16
-        // isDisabled
-        // locale="zh-CN"
-        formatOptions={{
-          // https://react-spectrum.adobe.com/react-aria/useNumberField.html#currency-values
-          style: 'currency',
-          currency: 'CNY',
-        }}
-        // decrementAriaLabel="减少 label"
-        // isWheelDisabled
-        // maxValue={10}
-        // minValue={0}
+      // autoFocus
+      // placeholder='placeholder'
+      // description='Description'
+      // isDisabled
+      // isRequired
+      // isInvalid
+      // value={25}
+      // onFocus={() => console.log('onFocus')}
+      // onBlur={() => console.log('onBlur')}
+      // onFocusChange={() => console.log('onFocusChange')}
+      // onKeyDown={() => console.log('onKeyDown')}
+      // onKeyUp={() => console.log('onKeyUp')}
+      // onCopy={() => console.log('onCopy')}
+      // onCut={() => console.log('onCut')}
+      // onPaste={() => console.log('onPaste')}
+      // onCompositionStart={() => console.log('onCompositionStart')}
+      // onCompositionEnd={() => console.log('onCompositionEnd')}
+      // onCompositionUpdate={() => console.log('onCompositionUpdate')}
+      // onSelect={() => console.log('onSelect')}
+      // onBeforeInput={() => console.log('onBeforeInput')}
+      // onInput={() => console.log('onInput')}
+      // aria-label='label888'
+      // label='label666'
       >
         <NumberFieldLabel className='text-blue-500'>Count: </NumberFieldLabel>
         <NumberFieldGroup className=''>

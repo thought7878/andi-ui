@@ -12,6 +12,7 @@
 # Install
 
 - Make sure that the relevant dependencies of `react-aria` and `react-stately` have been installed.
+
 - Copy the code in `packages/number-input/src/number-input.tsx` to your project.
 
 - Then import the required modules in your component file.
@@ -355,4 +356,4 @@ The `isDisabled` and `isReadOnly` props can be used prevent the user from ed
 
 ### Position
 
-# API Reference
+# Props Reference
