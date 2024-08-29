@@ -9,6 +9,8 @@
 - **NumberFieldIncrement**
 - **NumberFieldDecrement**
 
+![introduction](./apps/web/public/introduction.png)
+
 # Install
 
 - Make sure that the relevant dependencies of `react-aria` and `react-stately` have been installed.
