@@ -1,6 +1,20 @@
 # Introduction of number-input
 
+`number-input` is a composite component used to create a number input field with custom buttons (for increment and decrement), labels, and an input. It is built based on the `react-aria` and `react-stately` libraries and provides a highly customizable user experience and accessibility. This component set includes the following subcomponents:
+
+- **NumberField**
+- **NumberFieldInput**
+- **NumberFieldLabel**
+- **NumberFieldGroup**
+- **NumberFieldIncrement**
+- **NumberFieldDecrement**
+
 # Install
+
+- Make sure that the relevant dependencies of `react-aria` and `react-stately` have been installed.
+- Copy the code in `packages/number-input/src/number-input.tsx` to your project.
+
+- Then import the required modules in your component file.
 
 # Usage
 
@@ -24,6 +38,8 @@
 ```
 
 ![default](./apps/web/public/default.png)
+
+## HTML forms
 
 ## Input
 
@@ -69,9 +85,17 @@ A NumberField's `value` is empty by default, but an initial, uncontrolled, val
 
 #### Minimum and Maximum and Step
 
-The minValue and maxValue props can be used to limit the entered value to a specific range. The value will be clamped when the user blurs the input field. In addition, the increment and decrement buttons will be disabled when the value is within one step value from the bounds. Ranges can be open ended by only providing either minValue or maxValue rather than both.
+- Minimum and maximum values
 
-If a valid range is known ahead of time, it is a good idea to provide it to NumberField so it can optimize the experience. For example, when the minimum value is greater than or equal to zero, it is possible to use a numeric keyboard on iOS rather than a full text keyboard (necessary to enter a minus sign).
+The `minValue` and `maxValue` props can be used to limit the entered value to a specific range. The value will be clamped when the user blurs the input field. In addition, the increment and decrement buttons will be disabled when the value is within one `step` value from the bounds. Ranges can be open ended by only providing either `minValue` or `maxValue` rather than both.
+
+If a valid range is known ahead of time, it is a good idea to provide it to `NumberField` so it can optimize the experience. For example, when the minimum value is greater than or equal to zero, it is possible to use a numeric keyboard on iOS rather than a full text keyboard (necessary to enter a minus sign).
+
+- Step values
+
+The `step` prop can be used to snap the value to certain increments. If there is a `minValue` defined, the steps are calculated starting from the minimum. For example, if `minValue={2}`, and `step={3}`, the valid step values would be 2, 5, 8, 11, etc. If no `minValue` is defined, the steps are calculated starting from zero and extending in both directions. In other words, such that the values are evenly divisible by the step. If no `step` is defined, any decimal value may be typed, but incrementing and decrementing snaps the value to an integer.
+
+If the user types a value that is between two steps and blurs the input, the value will be snapped to the nearest step. When incrementing or decrementing, the value is snapped to the nearest step that is higher or lower, respectively. When incrementing or decrementing from an empty field, the value starts at the `minValue` or `maxValue`, respectively, if defined. Otherwise, the value starts from `0`.
 
 ```tsx
 <NumberField label='min-max' minValue={0} maxValue={10} step={3}>
@@ -250,6 +274,38 @@ If you need to allow the user to change the unit, you should include a separate 
 ```
 
 ### Disabled and read only
+
+The `isDisabled` and `isReadOnly` props can be used prevent the user from editing the value of the number field. The difference is that `isReadOnly` still allows the input to be focused, while `isDisabled` prevents all user interaction.
+
+```tsx
+<>
+  <NumberField label='Disabled' isDisabled value={25}>
+    <NumberFieldLabel>Disabled: </NumberFieldLabel>
+    <NumberFieldGroup>
+      <NumberFieldIncrement>
+        <ChevronUpIcon />
+      </NumberFieldIncrement>
+      <NumberFieldInput />
+      <NumberFieldDecrement>
+        <ChevronDownIcon />
+      </NumberFieldDecrement>
+    </NumberFieldGroup>
+  </NumberField>
+
+  <NumberField label='Read only' isReadOnly value={28}>
+    <NumberFieldLabel>Read only: </NumberFieldLabel>
+    <NumberFieldGroup>
+      <NumberFieldIncrement>
+        <ChevronUpIcon />
+      </NumberFieldIncrement>
+      <NumberFieldInput />
+      <NumberFieldDecrement>
+        <ChevronDownIcon />
+      </NumberFieldDecrement>
+    </NumberFieldGroup>
+  </NumberField>
+</>
+```
 
 ## Label
 
