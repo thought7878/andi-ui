@@ -130,7 +130,126 @@ let [value, setValue] = React.useState(0);
 </NumberField>;
 ```
 
-### Formatting
+### Number formatting
+
+The NumberField value can be formatted by using the `formatOptions` prop. `formatOptions` is compatible with the option parameter of [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat) and is applied based on the current locale. Currently only standard notation is supported, though scientific, engineering, and compact notation may be supported in the future.
+
+NumberField supports three numeral systems; Latin, Arabic-Indic, and Han positional decimal. Regardless of the locale, these three can be parsed from typed input. Initial rendering will appear in the [default numeral system](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/numberingSystem) for the locale unless explicitly overridden.
+
+#### Decimals
+
+The following example uses the `signDisplay` option to include the plus sign for positive numbers, for example to display an offset from some value. In addition, it always displays a minimum of 1 digit after the decimal point, and allows up to 2 fraction digits. If the user enters more than 2 fraction digits, the result will be rounded.
+
+```tsx
+<NumberField
+  label='Decimals'
+  defaultValue={0}
+  formatOptions={{
+    signDisplay: 'exceptZero',
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 2,
+  }}
+>
+  <NumberFieldLabel>Decimals: </NumberFieldLabel>
+  <NumberFieldGroup>
+    <NumberFieldIncrement>
+      <ChevronUpIcon />
+    </NumberFieldIncrement>
+    <NumberFieldInput />
+    <NumberFieldDecrement>
+      <ChevronDownIcon />
+    </NumberFieldDecrement>
+  </NumberFieldGroup>
+</NumberField>
+```
+
+#### Percentages
+
+The `style: 'percent'` option can be passed to the `formatOptions` prop to treat the value as a percentage. In this mode, the value is multiplied by 100 before it is displayed, i.e. `0.45` is displayed as `45%`. The reverse is also true: when the user enters a value, the `onChange` event will be triggered with the entered value divided by 100. When the percent option is enabled, the default step automatically changes to `0.01` such that incrementing and decrementing occurs by `1%`. This can be overridden with the `step` prop.
+
+```tsx
+<NumberField
+  label='Percentages'
+  formatOptions={{ style: 'percent' }}
+  minValue={0}
+  defaultValue={0.05}
+>
+  <NumberFieldLabel>Percentages: </NumberFieldLabel>
+  <NumberFieldGroup>
+    <NumberFieldIncrement>
+      <ChevronUpIcon />
+    </NumberFieldIncrement>
+    <NumberFieldInput />
+    <NumberFieldDecrement>
+      <ChevronDownIcon />
+    </NumberFieldDecrement>
+  </NumberFieldGroup>
+</NumberField>
+```
+
+#### Currency values
+
+The `style: 'currency'` option can be passed to the `formatOptions` prop to treat the value as a currency value. The `currency` option must also be passed to set the currency code (e.g. `USD`) to use. In addition, the `currencyDisplay` option can be used to choose whether to display the currency symbol, currency code, or currency name. Finally, the `currencySign` option can be set to `accounting` to use accounting notation for negative numbers, which uses parentheses rather than a minus sign in some locales.
+
+If you need to allow the user to change the currency, you should include a separate dropdown next to the NumberField. The NumberField itself will not determine the currency from the user input.
+
+```tsx
+<NumberField
+  label='Currency'
+  defaultValue={45}
+  formatOptions={{
+    style: 'currency',
+    currency: 'EUR',
+    currencyDisplay: 'code',
+    currencySign: 'accounting',
+  }}
+>
+  <NumberFieldLabel>Currency: </NumberFieldLabel>
+  <NumberFieldGroup>
+    <NumberFieldIncrement>
+      <ChevronUpIcon />
+    </NumberFieldIncrement>
+    <NumberFieldInput />
+    <NumberFieldDecrement>
+      <ChevronDownIcon />
+    </NumberFieldDecrement>
+  </NumberFieldGroup>
+</NumberField>
+```
+
+#### Units
+
+The `style: 'unit'` option can be passed to the `formatOptions` prop to format the value with a unit of measurement. The `unit` option must also be passed to set which unit to use (e.g. `inch`). In addition, the `unitDisplay` option can be used to choose whether to display the unit in long, short, or narrow format.
+
+If you need to allow the user to change the unit, you should include a separate dropdown next to the number field. The number field itself will not determine the unit from the user input.
+
+**Note:** The `unit` style is not currently supported in Safari. A [polyfill](https://formatjs.io/docs/polyfills/intl-numberformat/) may be necessary.
+
+```tsx
+<NumberField
+  label='Units'
+  defaultValue={4}
+  minValue={0}
+  formatOptions={{
+    style: 'unit',
+    unit: 'inch',
+    unitDisplay: 'long',
+  }}
+>
+  <NumberFieldLabel>Units: </NumberFieldLabel>
+  <NumberFieldGroup>
+    <NumberFieldIncrement>
+      <ChevronUpIcon />
+    </NumberFieldIncrement>
+    <NumberFieldInput />
+    <NumberFieldDecrement>
+      <ChevronDownIcon />
+    </NumberFieldDecrement>
+  </NumberFieldGroup>
+</NumberField>
+```
+
+### Disabled and read only
 
 ## Label
 
