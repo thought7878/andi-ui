@@ -111,34 +111,6 @@ const NumberFieldGroup = React.forwardRef<
 });
 NumberFieldGroup.displayName = 'NumberFieldGroup';
 
-type NumberFieldLabelProps = {
-  className?: string;
-  children: React.ReactNode;
-};
-const NumberFieldLabel = React.forwardRef<
-  HTMLLabelElement,
-  NumberFieldLabelProps
->(({ className, children }, ref) => {
-  const {
-    numberFieldProps: { labelProps },
-    labelPosition,
-  } = useNumberFieldContext();
-
-  return (
-    <label
-      ref={ref}
-      {...labelProps}
-      className={cn(
-        labelPosition === 'left' ? 'flex items-center justify-center' : '',
-        className
-      )}
-    >
-      {children}
-    </label>
-  );
-});
-NumberFieldLabel.displayName = 'NumberFieldLabel';
-
 type NumberFieldIncrementProps = {
   className?: string;
   children: React.ReactNode;
@@ -231,6 +203,58 @@ const NumberFieldInput = React.forwardRef<
 });
 NumberFieldInput.displayName = 'NumberFieldInput';
 
+type NumberFieldLabelProps = {
+  className?: string;
+  children: React.ReactNode;
+};
+const NumberFieldLabel = React.forwardRef<
+  HTMLLabelElement,
+  NumberFieldLabelProps
+>(({ className, children }, ref) => {
+  const {
+    numberFieldProps: { labelProps },
+    labelPosition,
+  } = useNumberFieldContext();
+
+  return (
+    <label
+      ref={ref}
+      {...labelProps}
+      className={cn(
+        labelPosition === 'left' ? 'flex items-center justify-center' : '',
+        className
+      )}
+    >
+      {children}
+    </label>
+  );
+});
+NumberFieldLabel.displayName = 'NumberFieldLabel';
+
+type NumberFieldErrorProps = {
+  className?: string;
+  children?: React.ReactNode;
+};
+const NumberFieldError = React.forwardRef<
+  HTMLDivElement,
+  NumberFieldErrorProps
+>(({ className, children }, ref) => {
+  const {
+    numberFieldProps: { errorMessageProps },
+  } = useNumberFieldContext();
+
+  return (
+    <div
+      ref={ref}
+      {...errorMessageProps}
+      className={cn('text-red-500', className)}
+    >
+      {children}
+    </div>
+  );
+});
+NumberFieldError.displayName = 'NumberFieldError';
+
 export {
   NumberField,
   NumberFieldDecrement,
@@ -238,6 +262,7 @@ export {
   NumberFieldIncrement,
   NumberFieldInput,
   NumberFieldLabel,
+  NumberFieldError,
 };
 
 export type {
@@ -247,6 +272,7 @@ export type {
   NumberFieldInputProps,
   NumberFieldLabelProps,
   NumberFieldProps,
+  NumberFieldErrorProps,
 };
 
 type ButtonProps = AriaButtonOptions<React.ElementType> & {
