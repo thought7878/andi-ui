@@ -1,59 +1,37 @@
-import Image from 'next/image';
-import styles from './page.module.css';
+import Link from 'next/link';
 // import { add } from '@andi-ui/number-input/add';
 // import { subtract } from '@andi-ui/number-input/subtract';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        {/* <div>add(1, 57): {add(1, 57)}</div>
-        <div>subtract(1, 57): {subtract(1, 57)}</div> */}
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href='https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <Image
-            aria-hidden
-            src='/file-text.svg'
-            alt='File icon'
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href='https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <Image
-            aria-hidden
-            src='/window.svg'
-            alt='Window icon'
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href='https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <Image
-            aria-hidden
-            src='/globe.svg'
-            alt='Globe icon'
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    <main className='flex flex-col gap-4 p-8'>
+      <Link href={'/number-input/default'}>default</Link>
+      <Link href={'/number-input/input'}>input</Link>
+      <Link href={'/number-input/input/value'}>input value</Link>
+      <Link href={'/number-input/input/min-max'}>min max</Link>
+      <Link href={'/number-input/input/disabled-readonly'}>
+        disabled-readonly
+      </Link>
+      <Link href={'/number-input/input/behavior'}>behavior / event</Link>
+      <div>
+        <div>Formatting:</div>
+        <div className='flex gap-4'>
+          <Link href={'/number-input/input/formatting/currency'}>currency</Link>
+          <Link href={'/number-input/input/formatting/decimal'}>decimal</Link>
+          <Link href={'/number-input/input/formatting/percentage'}>
+            percentage
+          </Link>
+          <Link href={'/number-input/input/formatting/unit'}>unit</Link>
+        </div>
+      </div>
+      <div>
+        <div>Form:</div>
+        <div className='flex gap-4'>
+          <Link href={'/number-input/form'}>HTML form</Link>
+        </div>
+      </div>
+
+      <Link href={'/number-input/button'}>button</Link>
+    </main>
   );
 }
