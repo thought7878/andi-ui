@@ -65,6 +65,7 @@ const NumberField = React.forwardRef<HTMLDivElement, NumberFieldProps>(
     const inputRef = React.useRef<HTMLInputElement>(null);
     const numberFieldProps = useNumberField(props, state, inputRef);
 
+    // TODO: Incompatible with react-aria
     numberFieldProps.inputProps.name = props.name;
 
     return (
