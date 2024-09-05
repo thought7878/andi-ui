@@ -9,7 +9,11 @@ import {
   useLocale,
   useNumberField,
 } from 'react-aria';
-import { NumberFieldStateOptions, useNumberFieldState } from 'react-stately';
+import {
+  NumberFieldState,
+  NumberFieldStateOptions,
+  useNumberFieldState,
+} from 'react-stately';
 
 import { cn } from './lib/utils';
 
@@ -34,6 +38,11 @@ const useNumberFieldContext = () => {
   return numberFieldContext;
 };
 
+// 定义暴露给父组件的 ref 类型
+type NumberFieldRef = Partial<HTMLDivElement> & {
+  state: NumberFieldState;
+  numberFieldProps: NumberFieldAria;
+};
 type NumberFieldProps = React.PropsWithChildren<
   Partial<AriaNumberFieldProps> & {
     name?: string;
@@ -42,7 +51,7 @@ type NumberFieldProps = React.PropsWithChildren<
     labelPosition?: 'left' | 'top';
   } & Partial<Pick<NumberFieldStateOptions, 'locale'>>
 >;
-const NumberField = React.forwardRef<HTMLDivElement, NumberFieldProps>(
+const NumberField = React.forwardRef<NumberFieldRef, NumberFieldProps>(
   (
     {
       children,
@@ -68,12 +77,27 @@ const NumberField = React.forwardRef<HTMLDivElement, NumberFieldProps>(
     // TODO: Incompatible with react-aria
     numberFieldProps.inputProps.name = props.name;
 
+    React.useImperativeHandle(ref, () => ({
+      state,
+      numberFieldProps,
+    }));
+
+    console.log('state.realtimeValidation:', state.realtimeValidation);
+    // // console.log('state.displayValidation:', state.displayValidation);
+
+    console.log('numberFieldProps.validationErrors888:', numberFieldProps);
+
+    // console.log(
+    //   'numberFieldProps.validationDetails:',
+    //   numberFieldProps.validationDetails
+    // );
+
     return (
       <NumberFieldContext.Provider
         value={{ numberFieldProps, inputRef, btnPosition, labelPosition }}
       >
         <div
-          ref={ref}
+          ref={ref as React.ForwardedRef<HTMLDivElement>}
           {...numberFieldProps.groupProps}
           className={cn(
             labelPosition === 'left' ? 'flex items-center gap-1' : '',
@@ -266,12 +290,13 @@ export {
 };
 
 export type {
+  NumberFieldRef,
+  NumberFieldProps,
   NumberFieldDecrementProps,
   NumberFieldGroupProps,
   NumberFieldIncrementProps,
   NumberFieldInputProps,
   NumberFieldLabelProps,
-  NumberFieldProps,
   NumberFieldErrorProps,
 };
 

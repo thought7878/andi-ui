@@ -31,16 +31,17 @@ export default function Page() {
 
   const ref = useRef<NumberFieldRef>(null);
 
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState();
   const validateValue = (value: number) => {
     if (value < 0) {
-      return false;
+      return true;
     }
-    return true;
+    return false;
   };
 
   useEffect(() => {
-    console.log('inputValue:', ref.current?.state);
+    console.log('state:', ref.current?.state);
+    console.log('numberFieldProps:', ref.current?.numberFieldProps);
     // console.log('numberValue:', ref.current?.numberValue);
     // console.log('realtimeValidation:', ref.current?.realtimeValidation);
     // console.log('displayValidation:', ref.current?.displayValidation);
@@ -56,22 +57,21 @@ export default function Page() {
         <NumberField
           ref={ref}
           name='amount'
-          value={value}
-          onChange={setValue}
-          // isRequired
+          // value={value}
+          // onChange={setValue}
+          isRequired
           validationBehavior='native'
           // isInvalid={validateValue(value)}
-          errorMessage={(validationResult) => {
-            if (validationResult.isInvalid) {
-              return <p>error Message</p>;
-            }
-            // return <p>error Message</p>;
-          }}
-          validate={(value) => {
-            if (value < 0) {
-              return 'value must be greater than 0';
-            }
-          }}
+          // errorMessage={(validationResult) => {
+          //   if (validationResult.isInvalid) {
+          //     return <p>error Message</p>;
+          //   }
+          // }}
+          // validate={(value) => {
+          //   if (value < 0) {
+          //     return 'value must be greater than 0';
+          //   }
+          // }}
         >
           <NumberFieldLabel className='text-blue-500'>Count: </NumberFieldLabel>
           <NumberFieldGroup className=''>

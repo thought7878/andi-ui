@@ -14,8 +14,8 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function Page() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    // event.preventDefault();
-    console.log('number field state:', ref.current?.state);
+    event.preventDefault();
+    // console.log('number field state:', ref.current?.state);
 
     // 获取表单元素的值
     const formData = new FormData(event.currentTarget);
@@ -40,7 +40,7 @@ export default function Page() {
   };
 
   useEffect(() => {
-    console.log('inputValue:', ref.current?.state);
+    // console.log('useEffect:', ref.current?.state);
     // console.log('numberValue:', ref.current?.numberValue);
     // console.log('realtimeValidation:', ref.current?.realtimeValidation);
     // console.log('displayValidation:', ref.current?.displayValidation);
@@ -56,24 +56,23 @@ export default function Page() {
         <NumberField
           ref={ref}
           name='amount'
-          value={value}
-          onChange={setValue}
-          // isRequired
+          // value={value}
+          // onChange={setValue}
           validationBehavior='native'
-          // isInvalid={validateValue(value)}
-          errorMessage={(validationResult) => {
-            if (validationResult.isInvalid) {
-              return <p>error Message</p>;
-            }
-            // return <p>error Message</p>;
-          }}
-          validate={(value) => {
-            if (value < 0) {
-              return 'value must be greater than 0';
-            }
-          }}
+          isRequired
+          // validate={(value) => {
+          //   if (value < 0) {
+          //     return 'value must be greater than 0';
+          //   }
+          // }}
+          errorMessage='error Message'
+          // errorMessage={(validationResult) => {
+          //   if (validationResult.isInvalid) {
+          //     return <p>error Message</p>;
+          //   }
+          // }}
         >
-          <NumberFieldLabel className='text-blue-500'>Count: </NumberFieldLabel>
+          <NumberFieldLabel className='text-blue-500'>Count:</NumberFieldLabel>
           <NumberFieldGroup className=''>
             <NumberFieldIncrement>
               <ChevronUpIcon className='h-4 w-4' />
@@ -87,6 +86,7 @@ export default function Page() {
         <input
           className='border border-gray-200'
           type='text'
+          // required
           name='username'
           placeholder='username'
         />
