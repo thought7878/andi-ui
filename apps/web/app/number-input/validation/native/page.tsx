@@ -7,6 +7,7 @@ import {
   NumberFieldInput,
   NumberFieldLabel,
   NumberFieldRef,
+  NumberFieldError,
 } from '@andi-ui/number-input';
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import { create } from '@/app/actions/input';
@@ -65,7 +66,7 @@ export default function Page() {
           //     return 'value must be greater than 0';
           //   }
           // }}
-          errorMessage='error Message'
+          errorMessage='必填项'
           // errorMessage={(validationResult) => {
           //   if (validationResult.isInvalid) {
           //     return <p>error Message</p>;
@@ -82,6 +83,7 @@ export default function Page() {
               <ChevronDownIcon className='h-4 w-4' />
             </NumberFieldDecrement>
           </NumberFieldGroup>
+          <NumberFieldError />
         </NumberField>
         <input
           className='border border-gray-200'

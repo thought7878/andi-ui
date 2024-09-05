@@ -14,14 +14,25 @@ import {
   NumberFieldStateOptions,
   useNumberFieldState,
 } from 'react-stately';
+// import {ValidationResult} from '@react-types/shared';
 
 import { cn } from './lib/utils';
+
+export interface ValidationResult {
+  /** Whether the input value is invalid. */
+  isInvalid: boolean;
+  /** The current error messages for the input if it is invalid, otherwise an empty array. */
+  validationErrors: string[];
+  /** The native validation details for the input. */
+  validationDetails: ValidityState;
+}
 
 interface NumberFieldContextValue {
   numberFieldProps: NumberFieldAria;
   inputRef?: React.RefObject<HTMLInputElement>;
   btnPosition?: 'inside' | 'outside';
   labelPosition?: 'left' | 'top';
+  errorMessage?: React.ReactNode | ((v: ValidationResult) => React.ReactNode);
 }
 
 const NumberFieldContext = React.createContext<NumberFieldContextValue>(
@@ -59,6 +70,7 @@ const NumberField = React.forwardRef<NumberFieldRef, NumberFieldProps>(
       btnPosition = 'inside',
       labelPosition = 'left',
       locale: customLocale,
+      errorMessage,
       ...props
     },
     ref
@@ -94,7 +106,13 @@ const NumberField = React.forwardRef<NumberFieldRef, NumberFieldProps>(
 
     return (
       <NumberFieldContext.Provider
-        value={{ numberFieldProps, inputRef, btnPosition, labelPosition }}
+        value={{
+          numberFieldProps,
+          inputRef,
+          btnPosition,
+          labelPosition,
+          errorMessage,
+        }}
       >
         <div
           ref={ref as React.ForwardedRef<HTMLDivElement>}
@@ -203,7 +221,7 @@ const NumberFieldInput = React.forwardRef<
   NumberFieldInputProps
 >(({ className }, ref) => {
   const {
-    numberFieldProps: { inputProps },
+    numberFieldProps: { inputProps, isInvalid },
     inputRef,
   } = useNumberFieldContext();
 
@@ -219,6 +237,7 @@ const NumberFieldInput = React.forwardRef<
       type='number'
       className={cn(
         'flex h-10 w-full transition-all rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+        isInvalid && 'focus-visible:ring-red-500',
         className
       )}
       {...inputProps}
@@ -264,8 +283,28 @@ const NumberFieldError = React.forwardRef<
   NumberFieldErrorProps
 >(({ className, children }, ref) => {
   const {
-    numberFieldProps: { errorMessageProps },
+    numberFieldProps: {
+      errorMessageProps,
+      isInvalid,
+      validationErrors,
+      validationDetails,
+    },
+    errorMessage,
   } = useNumberFieldContext();
+
+  let errorMessageString: React.ReactNode = null;
+  if (typeof errorMessage === 'function') {
+    errorMessageString =
+      isInvalid && validationErrors != null && validationDetails != null
+        ? errorMessage({
+            isInvalid,
+            validationErrors,
+            validationDetails,
+          })
+        : null;
+  } else {
+    errorMessageString = errorMessage;
+  }
 
   return (
     <div
@@ -273,7 +312,7 @@ const NumberFieldError = React.forwardRef<
       {...errorMessageProps}
       className={cn('text-red-500', className)}
     >
-      {children}
+      {isInvalid && errorMessageString}
     </div>
   );
 });
