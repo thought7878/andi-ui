@@ -289,6 +289,7 @@ const NumberFieldError = React.forwardRef<
       validationDetails,
     },
     errorMessage,
+    labelPosition,
   } = useNumberFieldContext();
 
   let errorMessageString: React.ReactNode = null;
@@ -311,7 +312,11 @@ const NumberFieldError = React.forwardRef<
     <div
       ref={ref}
       {...errorMessageProps}
-      className={cn('text-red-500', className)}
+      className={cn(
+        'text-red-500',
+        labelPosition === 'left' && 'col-start-2',
+        className
+      )}
     >
       {isInvalid && errorMessageString}
     </div>

@@ -64,10 +64,8 @@ export default function Page() {
           //     return <p>error Message</p>;
           //   }
           // }}
-          labelPosition='top'
         >
           <NumberFieldLabel>Count:</NumberFieldLabel>
-          {/* <div className='flex flex-col'> */}
           <NumberFieldGroup>
             <NumberFieldIncrement>
               <ChevronUpIcon className='h-4 w-4' />
@@ -78,7 +76,6 @@ export default function Page() {
             </NumberFieldDecrement>
           </NumberFieldGroup>
           <NumberFieldError />
-          {/* </div> */}
         </NumberField>
         <input
           className='border border-gray-200'
