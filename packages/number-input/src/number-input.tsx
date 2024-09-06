@@ -119,7 +119,9 @@ const NumberField = React.forwardRef<NumberFieldRef, NumberFieldProps>(
           ref={ref as React.ForwardedRef<HTMLDivElement>}
           {...numberFieldProps.groupProps}
           className={cn(
-            labelPosition === 'left' ? 'flex items-center gap-1' : '',
+            'grid grid-cols-1 grid-rows-3 gap-1 items-center',
+            // TODO: which is good ? 'grid grid-cols-1 grid-rows-[auto_auto_auto] gap-1 items-center',
+            labelPosition === 'left' ? 'grid-cols-[auto_1fr] grid-rows-2' : '',
             className
           )}
         >
@@ -143,11 +145,7 @@ const NumberFieldGroup = React.forwardRef<
     numberFieldProps: { groupProps },
   } = useNumberFieldContext();
   return (
-    <div
-      ref={ref}
-      className={cn('relative flex gap-1', className)}
-      {...groupProps}
-    >
+    <div ref={ref} className={cn('relative', className)} {...groupProps}>
       {children}
     </div>
   );
