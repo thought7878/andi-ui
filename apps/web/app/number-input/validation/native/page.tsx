@@ -66,7 +66,7 @@ export default function Page() {
           //     return 'value must be greater than 0';
           //   }
           // }}
-          errorMessage='必填项'
+          // errorMessage='必填项'
           // errorMessage={(validationResult) => {
           //   if (validationResult.isInvalid) {
           //     return <p>error Message</p>;

@@ -302,8 +302,10 @@ const NumberFieldError = React.forwardRef<
             validationDetails,
           })
         : null;
-  } else {
+  } else if (errorMessage) {
     errorMessageString = errorMessage;
+  } else {
+    errorMessageString = validationErrors;
   }
 
   return (
