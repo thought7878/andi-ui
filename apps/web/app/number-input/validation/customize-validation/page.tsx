@@ -57,23 +57,20 @@ export default function Page() {
         <NumberField
           ref={ref}
           name='amount'
-          // value={value}
-          // onChange={setValue}
+          value={value}
+          onChange={setValue}
           validationBehavior='native'
-          isRequired
-          // validate={(value) => {
-          //   if (value < 0) {
-          //     return 'value must be greater than 0';
-          //   }
-          // }}
-          // errorMessage='必填项'
-          // errorMessage={(validationResult) => {
-          //   if (validationResult.isInvalid) {
-          //     return <p>error Message</p>;
-          //   }
-          // }}
+          validate={(value) => {
+            if (value < 0) {
+              return 'value must be greater than 0';
+            }
+          }}
         >
-          <NumberFieldLabel className='text-blue-500'>Count:</NumberFieldLabel>
+          <NumberFieldLabel className=''>
+            <span className="after:content-['*'] after:ml-0.5 after:text-red-500">
+              Count
+            </span>
+          </NumberFieldLabel>
           <NumberFieldGroup className=''>
             <NumberFieldIncrement>
               <ChevronUpIcon className='h-4 w-4' />

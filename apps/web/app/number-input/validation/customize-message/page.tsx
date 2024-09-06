@@ -7,6 +7,7 @@ import {
   NumberFieldInput,
   NumberFieldLabel,
   NumberFieldRef,
+  NumberFieldError,
 } from '@andi-ui/number-input';
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import { create } from '@/app/actions/input';
@@ -15,7 +16,7 @@ import { useEffect, useRef, useState } from 'react';
 export default function Page() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('submited state:', ref.current?.state);
+    // console.log('number field state:', ref.current?.state);
 
     // 获取表单元素的值
     const formData = new FormData(event.currentTarget);
@@ -40,7 +41,10 @@ export default function Page() {
   };
 
   useEffect(() => {
-    console.log('value changed state:', ref.current?.state);
+    // console.log('useEffect:', ref.current?.state);
+    // console.log('numberValue:', ref.current?.numberValue);
+    // console.log('realtimeValidation:', ref.current?.realtimeValidation);
+    // console.log('displayValidation:', ref.current?.displayValidation);
   }, [value]);
 
   return (
@@ -53,23 +57,22 @@ export default function Page() {
         <NumberField
           ref={ref}
           name='amount'
-          value={value}
-          onChange={setValue}
-          isInvalid
-          validate={(value) => {
-            console.log('validate() executed');
-
-            if (value < 0) {
-              return 'value must be greater than 0';
-            }
-          }}
+          // value={value}
+          // onChange={setValue}
+          validationBehavior='native'
+          isRequired
+          // errorMessage='必填项'
           errorMessage={(validationResult) => {
-            if (validationResult.isInvalid) {
-              return <p>error Message</p>;
+            if (validationResult.validationDetails.valueMissing) {
+              return <p>必填项</p>;
             }
           }}
         >
-          <NumberFieldLabel className='text-blue-500'>Count: </NumberFieldLabel>
+          <NumberFieldLabel className=''>
+            <span className="after:content-['*'] after:ml-0.5 after:text-red-500">
+              Count
+            </span>
+          </NumberFieldLabel>
           <NumberFieldGroup className=''>
             <NumberFieldIncrement>
               <ChevronUpIcon className='h-4 w-4' />
@@ -79,10 +82,12 @@ export default function Page() {
               <ChevronDownIcon className='h-4 w-4' />
             </NumberFieldDecrement>
           </NumberFieldGroup>
+          <NumberFieldError />
         </NumberField>
         <input
           className='border border-gray-200'
           type='text'
+          // required
           name='username'
           placeholder='username'
         />

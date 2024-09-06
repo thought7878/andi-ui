@@ -40,44 +40,23 @@ export default function Page() {
     return true;
   };
 
-  useEffect(() => {
-    // console.log('useEffect:', ref.current?.state);
-    // console.log('numberValue:', ref.current?.numberValue);
-    // console.log('realtimeValidation:', ref.current?.realtimeValidation);
-    // console.log('displayValidation:', ref.current?.displayValidation);
-  }, [value]);
-
   return (
     <div>
       <form
         // action={create}
-        onSubmit={handleSubmit}
+        // onSubmit={handleSubmit}
         className='flex gap-4 flex-col p-8'
       >
         <NumberField
           ref={ref}
           name='amount'
-          // value={value}
-          // onChange={setValue}
           validationBehavior='native'
           isRequired
-          // validate={(value) => {
-          //   if (value < 0) {
-          //     return 'value must be greater than 0';
-          //   }
-          // }}
-          // errorMessage='必填项'
-          // errorMessage={(validationResult) => {
-          //   if (validationResult.isInvalid) {
-          //     return <p>error Message</p>;
-          //   }
-          // }}
         >
           <NumberFieldLabel className=''>
             <span className="after:content-['*'] after:ml-0.5 after:text-red-500">
               Count
             </span>
-            {/* <span className='ml-1 align-middle'>*</span> */}
           </NumberFieldLabel>
           <NumberFieldGroup className=''>
             <NumberFieldIncrement>
