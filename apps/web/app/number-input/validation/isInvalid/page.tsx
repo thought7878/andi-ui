@@ -41,7 +41,7 @@ export default function Page() {
   };
 
   useEffect(() => {
-    console.log('value changed state:', ref.current?.state);
+    // console.log('value changed state:', ref.current?.state);
   }, [value]);
 
   return (

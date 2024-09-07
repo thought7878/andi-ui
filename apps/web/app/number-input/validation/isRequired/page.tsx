@@ -50,8 +50,9 @@ export default function Page() {
         <NumberField
           ref={ref}
           name='amount'
-          validationBehavior='native'
+          // validationBehavior='native'
           isRequired
+          // labelPosition='top'
         >
           <NumberFieldLabel className=''>
             <span className="after:content-['*'] after:ml-0.5 after:text-red-500">

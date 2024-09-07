@@ -358,4 +358,33 @@ The `isDisabled` and `isReadOnly` props can be used prevent the user from ed
 
 ### Position
 
+```tsx
+<NumberField btnPosition='outside' labelPosition='top'>
+  <NumberFieldLabel>Amount: </NumberFieldLabel>
+  <NumberFieldGroup>
+    <NumberFieldIncrement>
+      <ChevronUpIcon />
+    </NumberFieldIncrement>
+    <NumberFieldInput />
+    <NumberFieldDecrement>
+      <ChevronDownIcon />
+    </NumberFieldDecrement>
+  </NumberFieldGroup>
+</NumberField>
+```
+
+![button](./apps/web/public/button_position.png)
+
+## Validation
+
+### Built-in validation
+
+### Customizing error messages
+
+### Custom validation
+
+### Realtime validation
+
+### Server validation
+
 # Props Reference

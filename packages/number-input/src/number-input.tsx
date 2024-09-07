@@ -95,10 +95,10 @@ const NumberField = React.forwardRef<NumberFieldRef, NumberFieldProps>(
     }));
 
     // TODO: 代码执行，debug不执行
-    console.log('state.realtimeValidation:', state.realtimeValidation);
-    // // console.log('state.displayValidation:', state.displayValidation);
+    // console.log('state.realtimeValidation:', state.realtimeValidation);
+    console.log('执行了很多次:');
 
-    console.log('numberFieldProps.validationErrors888:', numberFieldProps);
+    // console.log('numberFieldProps.validationErrors888:', numberFieldProps);
 
     // console.log(
     //   'numberFieldProps.validationDetails:',
@@ -119,9 +119,11 @@ const NumberField = React.forwardRef<NumberFieldRef, NumberFieldProps>(
           ref={ref as React.ForwardedRef<HTMLDivElement>}
           {...numberFieldProps.groupProps}
           className={cn(
-            'grid grid-cols-1 grid-rows-3 gap-1 items-center',
+            'grid grid-cols-1 grid-rows-[auto_1fr_28px] gap-1 items-center',
             // TODO: which is good ? 'grid grid-cols-1 grid-rows-[auto_auto_auto] gap-1 items-center',
-            labelPosition === 'left' ? 'grid-cols-[auto_1fr] grid-rows-2' : '',
+            labelPosition === 'left'
+              ? 'grid-cols-[auto_1fr] grid-rows-[1fr_28px]'
+              : '',
             className
           )}
         >
@@ -145,7 +147,11 @@ const NumberFieldGroup = React.forwardRef<
     numberFieldProps: { groupProps },
   } = useNumberFieldContext();
   return (
-    <div ref={ref} className={cn('relative', className)} {...groupProps}>
+    <div
+      ref={ref}
+      className={cn('relative flex gap-1', className)}
+      {...groupProps}
+    >
       {children}
     </div>
   );
