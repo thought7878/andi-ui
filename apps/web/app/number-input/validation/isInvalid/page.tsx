@@ -52,8 +52,7 @@ export default function Page() {
         className='flex gap-4 flex-col p-8'
       >
         <NumberField
-          ref={ref}
-          name='amount'
+          name='count'
           value={value}
           onChange={setValue}
           validationBehavior='native'
@@ -77,7 +76,7 @@ export default function Page() {
           </NumberFieldGroup>
           <NumberFieldError />
         </NumberField>
-        <input
+        {/* <input
           className='border border-gray-200'
           type='text'
           name='username'
@@ -88,8 +87,11 @@ export default function Page() {
           type='password'
           name='password'
           placeholder='password'
-        />
-        <button type='submit'>submit</button>
+        /> */}
+        <div className='flex gap-4 justify-around'>
+          <button type='submit'>submit</button>
+          <button type='reset'>reset</button>
+        </div>
       </form>
     </div>
   );

@@ -1,4 +1,4 @@
-# Introduction of number-input
+# Anatomy of number-input
 
 `number-input` is a composite component used to create a number input field with custom buttons (for increment and decrement), labels, and an input. It is built based on the `react-aria` and `react-stately` libraries and provides a highly customizable user experience and accessibility. This component set includes the following subcomponents:
 
@@ -43,6 +43,101 @@
 ![default](./apps/web/public/default.png)
 
 ## HTML forms
+
+## Integrating with Shadcn or react-hook-form
+
+```tsx
+const formSchema = z.object({
+  username: z.string().min(2, {
+    message: 'Username must be at least 2 characters.',
+  }),
+  password: z.string().min(2, {
+    message: 'Password must be at least 2 characters.',
+  }),
+  amount: z.number().nonnegative(),
+});
+
+export default function ProfileForm() {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      username: '',
+      password: '',
+      amount: 0,
+    },
+  });
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    const formData = new FormData();
+    Object.entries(values).forEach(([key, value]) => {
+      formData.append(key, value.toString());
+    });
+
+    // create(formData);
+  }
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
+        <FormField
+          control={form.control}
+          name='username'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Username</FormLabel>
+              <FormControl>
+                <Input placeholder='username' {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name='password'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input type='password' placeholder='password' {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name='amount'
+          render={({ field: { onChange, value } }) => (
+            <FormItem>
+              <FormLabel>Amount</FormLabel>
+              <FormControl>
+                <NumberField
+                  onChange={onChange}
+                  value={value}
+                  className='gap-0'
+                >
+                  <NumberFieldGroup>
+                    <NumberFieldDecrement>
+                      <ChevronDownIcon className='h-4 w-4' />
+                    </NumberFieldDecrement>
+                    <NumberFieldInput />
+                    <NumberFieldIncrement>
+                      <ChevronUpIcon className='h-4 w-4' />
+                    </NumberFieldIncrement>
+                  </NumberFieldGroup>
+                </NumberField>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type='submit'>Submit</Button>
+      </form>
+    </Form>
+  );
+}
+```
 
 ## Input
 

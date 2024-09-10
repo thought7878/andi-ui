@@ -18,6 +18,7 @@ import {
 
 import { cn } from './lib/utils';
 
+// TODO: need to be fixed
 export interface ValidationResult {
   /** Whether the input value is invalid. */
   isInvalid: boolean;
@@ -49,7 +50,6 @@ const useNumberFieldContext = () => {
   return numberFieldContext;
 };
 
-// 定义暴露给父组件的 ref 类型
 type NumberFieldRef = Partial<HTMLDivElement> & {
   state: NumberFieldState;
   numberFieldProps: NumberFieldAria;
@@ -105,11 +105,9 @@ const NumberField = React.forwardRef<NumberFieldRef, NumberFieldProps>(
     }));
 
     // TODO: 代码执行，debug不执行
-    // console.log('state.realtimeValidation:', state.realtimeValidation);
     console.log('执行了很多次:');
-
+    // console.log('state.realtimeValidation:', state.realtimeValidation);
     // console.log('numberFieldProps.validationErrors888:', numberFieldProps);
-
     // console.log(
     //   'numberFieldProps.validationDetails:',
     //   numberFieldProps.validationDetails
