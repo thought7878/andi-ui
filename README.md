@@ -265,7 +265,7 @@ If the user types a value that is between two steps and blurs the input, the val
     <NumberFieldIncrement>
       <ChevronUpIcon />
     </NumberFieldIncrement>
-    <NumberFieldInput className='border-blue-500 w-[500px]' />
+    <NumberFieldInput className='border-blue-500 w-[500px] focus-visible:ring-blue-500' />
     <NumberFieldDecrement>
       <ChevronDownIcon />
     </NumberFieldDecrement>
@@ -279,7 +279,7 @@ If the user types a value that is between two steps and blurs the input, the val
 
 <!-- TODO: update Props link -->
 
-NumberField accepts an `onChange` prop which is triggered whenever the value is committed by the user. This happens on blur of the field or on interaction with the stepper functionality, arrow keys or stepper buttons. 
+NumberField accepts an `onChange` prop which is triggered whenever the value is committed by the user. This happens on blur of the field or on interaction with the stepper functionality, arrow keys or stepper buttons.
 
 ```tsx
 let [value, setValue] = React.useState(0);
@@ -453,10 +453,14 @@ The `isDisabled` and `isReadOnly` props can be used prevent the user from ed
 
 ## Label
 
+For better accessibility, a label should be added to `NumberField`
+
 ### Style & Position
 
+The label style can be fully customized
+
 ```tsx
-<NumberField label='Amount' labelPosition='top'>
+<NumberField label='Amount'>
   <NumberFieldLabel className='text-blue-500 text-lg'>Amount:</NumberFieldLabel>
   <NumberFieldGroup>
     <NumberFieldIncrement>
@@ -475,6 +479,8 @@ The `isDisabled` and `isReadOnly` props can be used prevent the user from ed
 ## Increment & Decrement Buttons
 
 ### Style
+
+You can fully customize the button style and its children
 
 ```tsx
 <NumberField>
@@ -499,6 +505,8 @@ The `isDisabled` and `isReadOnly` props can be used prevent the user from ed
 
 ### Position
 
+`btnPosition` has two values, one is `inside`, which is the default value, and the other is `outside`
+
 ```tsx
 <NumberField btnPosition='outside'>
   <NumberFieldLabel>Amount: </NumberFieldLabel>
@@ -522,10 +530,10 @@ The `isDisabled` and `isReadOnly` props can be used prevent the user from ed
 
 ```tsx
 <form className='flex gap-4 flex-col p-8'>
-  <NumberField ref={ref} name='amount' isRequired>
+  <NumberField name='amount' isRequired>
     <NumberFieldLabel>
       <span className="after:content-['*'] after:ml-0.5 after:text-red-500">
-        Count
+        Amount
       </span>
     </NumberFieldLabel>
     <NumberFieldGroup>
@@ -554,8 +562,7 @@ By default, displays the error message provided by the browser, which is localiz
 ```tsx
 <form className='flex gap-4 flex-col p-8'>
   <NumberField
-    ref={ref}
-    name='count'
+    name='amount'
     isRequired
     // errorMessage='This is required'
     errorMessage={(validationResult) => {
@@ -566,7 +573,7 @@ By default, displays the error message provided by the browser, which is localiz
   >
     <NumberFieldLabel className=''>
       <span className="after:content-['*'] after:ml-0.5 after:text-red-500">
-        Count
+        Amount
       </span>
     </NumberFieldLabel>
     <NumberFieldGroup className=''>
@@ -597,7 +604,7 @@ Custom validation is supported by providing a function to the `validate` prop.
 ```tsx
 <form className='flex gap-4 flex-col p-8'>
   <NumberField
-    name='count'
+    name='amount'
     validate={(value) => {
       if (value < 0) {
         return 'value must be greater than 0';
@@ -606,7 +613,7 @@ Custom validation is supported by providing a function to the `validate` prop.
   >
     <NumberFieldLabel>
       <span className="after:content-['*'] after:ml-0.5 after:text-red-500">
-        Count
+        Amount
       </span>
     </NumberFieldLabel>
     <NumberFieldGroup>
