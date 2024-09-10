@@ -51,20 +51,18 @@ export default function Page() {
     <div>
       <form
         // action={create}
-        onSubmit={handleSubmit}
+        // onSubmit={handleSubmit}
         className='flex gap-4 flex-col p-8'
       >
         <NumberField
           ref={ref}
+          labelPosition='top'
           name='amount'
-          // value={value}
-          // onChange={setValue}
-          validationBehavior='native'
           isRequired
-          // errorMessage='必填项'
+          // errorMessage='This is required'
           errorMessage={(validationResult) => {
             if (validationResult.validationDetails.valueMissing) {
-              return <p>必填项</p>;
+              return <p>This is required</p>;
             }
           }}
         >
@@ -84,7 +82,7 @@ export default function Page() {
           </NumberFieldGroup>
           <NumberFieldError />
         </NumberField>
-        <input
+        {/* <input
           className='border border-gray-200'
           type='text'
           // required
@@ -96,8 +94,11 @@ export default function Page() {
           type='password'
           name='password'
           placeholder='password'
-        />
-        <button type='submit'>submit</button>
+        /> */}
+        <div className='flex gap-4 justify-around'>
+          <button type='submit'>submit</button>
+          <button type='reset'>reset</button>
+        </div>
       </form>
     </div>
   );

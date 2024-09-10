@@ -407,6 +407,47 @@ The `isDisabled` and `isReadOnly` props can be used prevent the user from ed
 
 ### Customizing error messages
 
+By default, displays the error message provided by the browser, which is localized in the user's preferred language. You can customize these messages by providing a function to the `errorMessage` prop. This receives a list of error strings along with a [ValidityState](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState) object describing why the field is invalid, and should return an error message to display.
+
+```tsx
+<form className='flex gap-4 flex-col p-8'>
+  <NumberField
+    ref={ref}
+    name='count'
+    isRequired
+    // errorMessage='This is required'
+    errorMessage={(validationResult) => {
+      if (validationResult.validationDetails.valueMissing) {
+        return <p>This is required</p>;
+      }
+    }}
+  >
+    <NumberFieldLabel className=''>
+      <span className="after:content-['*'] after:ml-0.5 after:text-red-500">
+        Count
+      </span>
+    </NumberFieldLabel>
+    <NumberFieldGroup className=''>
+      <NumberFieldIncrement>
+        <ChevronUpIcon className='h-4 w-4' />
+      </NumberFieldIncrement>
+      <NumberFieldInput />
+      <NumberFieldDecrement>
+        <ChevronDownIcon className='h-4 w-4' />
+      </NumberFieldDecrement>
+    </NumberFieldGroup>
+    <NumberFieldError />
+  </NumberField>
+
+  <div className='flex gap-4 justify-around'>
+    <button type='submit'>submit</button>
+    <button type='reset'>reset</button>
+  </div>
+</form>
+```
+
+![Customizing error messages](./apps/web/public/customizing_error_message.png)
+
 ### Custom validation
 
 ### Realtime validation
