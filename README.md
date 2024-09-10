@@ -376,7 +376,34 @@ The `isDisabled` and `isReadOnly` props can be used prevent the user from ed
 
 ## Validation
 
-### Built-in validation
+### isRequired
+
+```tsx
+<form className='flex gap-4 flex-col p-8'>
+  <NumberField ref={ref} name='amount' isRequired>
+    <NumberFieldLabel>
+      <span className="after:content-['*'] after:ml-0.5 after:text-red-500">
+        Count
+      </span>
+    </NumberFieldLabel>
+    <NumberFieldGroup>
+      <NumberFieldIncrement>
+        <ChevronUpIcon className='h-4 w-4' />
+      </NumberFieldIncrement>
+      <NumberFieldInput />
+      <NumberFieldDecrement>
+        <ChevronDownIcon className='h-4 w-4' />
+      </NumberFieldDecrement>
+    </NumberFieldGroup>
+    <NumberFieldError />
+  </NumberField>
+
+  <div className='flex gap-4 justify-around'>
+    <button type='submit'>submit</button>
+    <button type='reset'>reset</button>
+  </div>
+</form>
+```
 
 ### Customizing error messages
 
