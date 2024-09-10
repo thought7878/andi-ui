@@ -83,7 +83,6 @@ A NumberField's `value` is empty by default, but an initial, uncontrolled, val
         </NumberFieldDecrement>
       </NumberFieldGroup>
     </NumberField>
-
 ```
 
 #### Minimum and Maximum and Step

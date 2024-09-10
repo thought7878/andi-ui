@@ -71,6 +71,7 @@ const NumberField = React.forwardRef<NumberFieldRef, NumberFieldProps>(
       labelPosition = 'left',
       locale: customLocale,
       errorMessage,
+      validationBehavior = 'native',
       ...props
     },
     ref
@@ -80,11 +81,20 @@ const NumberField = React.forwardRef<NumberFieldRef, NumberFieldProps>(
     // TODO: If label is empty, numberFieldProps.labelProps is empty. Because of using NumberFieldLabel, so props.label need default value
     props.label = props.label || props.name || 'label';
 
-    const state = useNumberFieldState({ ...props, locale });
+    const state = useNumberFieldState({
+      ...props,
+      locale,
+      errorMessage,
+      validationBehavior,
+    });
 
     // TODO: Incompatible with react-aria
     const inputRef = React.useRef<HTMLInputElement>(null);
-    const numberFieldProps = useNumberField(props, state, inputRef);
+    const numberFieldProps = useNumberField(
+      { ...props, errorMessage, validationBehavior },
+      state,
+      inputRef
+    );
 
     // TODO: Incompatible with react-aria
     numberFieldProps.inputProps.name = props.name;

@@ -52,14 +52,14 @@ export default function Page() {
           name='amount'
           // validationBehavior='native'
           isRequired
-          // labelPosition='top'
+          // errorMessage='Error message'
         >
-          <NumberFieldLabel className=''>
+          <NumberFieldLabel>
             <span className="after:content-['*'] after:ml-0.5 after:text-red-500">
               Count
             </span>
           </NumberFieldLabel>
-          <NumberFieldGroup className=''>
+          <NumberFieldGroup>
             <NumberFieldIncrement>
               <ChevronUpIcon className='h-4 w-4' />
             </NumberFieldIncrement>
