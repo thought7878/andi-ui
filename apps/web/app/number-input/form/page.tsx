@@ -6,6 +6,7 @@ import {
   NumberFieldIncrement,
   NumberFieldInput,
   NumberFieldLabel,
+  NumberFieldError,
 } from '@andi-ui/number-input';
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import { create } from '@/app/actions/input';
@@ -46,9 +47,9 @@ export default function Page() {
           placeholder='password'
         />
 
-        <NumberField name='amount' errorMessage='error Message'>
-          <NumberFieldLabel className='text-blue-500'>Count: </NumberFieldLabel>
-          <NumberFieldGroup className=''>
+        <NumberField name='amount' isRequired>
+          <NumberFieldLabel>Amount</NumberFieldLabel>
+          <NumberFieldGroup>
             <NumberFieldIncrement>
               <ChevronUpIcon className='h-4 w-4' />
             </NumberFieldIncrement>
@@ -57,6 +58,7 @@ export default function Page() {
               <ChevronDownIcon className='h-4 w-4' />
             </NumberFieldDecrement>
           </NumberFieldGroup>
+          <NumberFieldError />
         </NumberField>
         <button type='submit'>submit</button>
       </form>

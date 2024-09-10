@@ -42,7 +42,43 @@
 
 ![default](./apps/web/public/default.png)
 
-## HTML forms
+## Integrating with HTML form
+
+```tsx
+<form
+  action={create}
+  // onSubmit={handleSubmit}
+  className='flex gap-4 flex-col p-8'
+>
+  <input
+    className='border border-gray-200'
+    type='text'
+    name='username'
+    placeholder='username'
+  />
+  <input
+    className='border border-gray-200'
+    type='password'
+    name='password'
+    placeholder='password'
+  />
+
+  <NumberField name='amount' isRequired>
+    <NumberFieldLabel>Amount</NumberFieldLabel>
+    <NumberFieldGroup>
+      <NumberFieldIncrement>
+        <ChevronUpIcon className='h-4 w-4' />
+      </NumberFieldIncrement>
+      <NumberFieldInput />
+      <NumberFieldDecrement>
+        <ChevronDownIcon className='h-4 w-4' />
+      </NumberFieldDecrement>
+    </NumberFieldGroup>
+    <NumberFieldError />
+  </NumberField>
+  <button type='submit'>submit</button>
+</form>
+```
 
 ## Integrating with Shadcn or react-hook-form
 
