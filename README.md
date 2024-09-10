@@ -4,19 +4,13 @@
 
 ```tsx
 <NumberField name="..." value="..." onChange={...} className="...">
-
-  <NumberFieldLabel className="...">{/* label */}</NumberFieldLabel>
-
-  <NumberFieldGroup className="...">
-    <NumberFieldIncrement className="...">{/* increment icon */}</NumberFieldIncrement>
-
+  <NumberFieldLabel>{/* label */}</NumberFieldLabel>
+  <NumberFieldGroup>
+    <NumberFieldIncrement>{/* increment icon */}</NumberFieldIncrement>
     <NumberFieldInput className="..." />
-
-    <NumberFieldDecrement className="...">{/* decrement icon */}</NumberFieldDecrement>
+    <NumberFieldDecrement>{/* decrement icon */}</NumberFieldDecrement>
   </NumberFieldGroup>
-
-  <NumberFieldError className="..." />
-
+  <NumberFieldError />
 </NumberField>
 ```
 
@@ -258,6 +252,10 @@ If the user types a value that is between two steps and blurs the input, the val
 
 ### Style
 
+The `NumberFieldInput` style can be fully customized.
+
+**Note:** If you want to change the height of the input, you should change the height of the increment and decrement buttons to half the height of the input
+
 ```tsx
 <NumberField>
   <NumberFieldLabel>Amount: </NumberFieldLabel>
@@ -457,7 +455,7 @@ For better accessibility, a label should be added to `NumberField`
 
 ### Style & Position
 
-The label style can be fully customized
+The `NumberFieldLabel` style can be fully customized
 
 ```tsx
 <NumberField label='Amount'>
@@ -480,7 +478,9 @@ The label style can be fully customized
 
 ### Style
 
-You can fully customize the button style and its children
+You can fully customize the button style and its children.
+
+**Note:**  If you want to change the height of the input, you should change the height of the increment and decrement buttons to half the height of the input
 
 ```tsx
 <NumberField>
