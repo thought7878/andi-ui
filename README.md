@@ -2,12 +2,23 @@
 
 `number-input` is a composite component used to create a number input field with custom buttons (for increment and decrement), labels, and an input. It is built based on the `react-aria` and `react-stately` libraries and provides a highly customizable user experience and accessibility. This component set includes the following subcomponents:
 
-- **NumberField**
-- **NumberFieldInput**
-- **NumberFieldLabel**
-- **NumberFieldGroup**
-- **NumberFieldIncrement**
-- **NumberFieldDecrement**
+```tsx
+<NumberField name="..." value="..." onChange={...} className="...">
+
+  <NumberFieldLabel className="...">{/* label */}</NumberFieldLabel>
+
+  <NumberFieldGroup className="...">
+    <NumberFieldIncrement className="...">{/* increment icon */}</NumberFieldIncrement>
+
+    <NumberFieldInput className="..." />
+
+    <NumberFieldDecrement className="...">{/* decrement icon */}</NumberFieldDecrement>
+  </NumberFieldGroup>
+
+  <NumberFieldError className="..." />
+
+</NumberField>
+```
 
 ![introduction](./apps/web/public/introduction.png)
 
@@ -268,7 +279,7 @@ If the user types a value that is between two steps and blurs the input, the val
 
 <!-- TODO: update Props link -->
 
-NumberField accepts an `onChange` prop which is triggered whenever the value is committed by the user. This happens on blur of the field or on interaction with the stepper functionality, arrow keys or stepper buttons. For a full list of supported events, see the [Props ](https://react-spectrum.adobe.com/react-spectrum/NumberField.html#props) table below.
+NumberField accepts an `onChange` prop which is triggered whenever the value is committed by the user. This happens on blur of the field or on interaction with the stepper functionality, arrow keys or stepper buttons. 
 
 ```tsx
 let [value, setValue] = React.useState(0);
@@ -489,7 +500,7 @@ The `isDisabled` and `isReadOnly` props can be used prevent the user from ed
 ### Position
 
 ```tsx
-<NumberField btnPosition='outside' labelPosition='top'>
+<NumberField btnPosition='outside'>
   <NumberFieldLabel>Amount: </NumberFieldLabel>
   <NumberFieldGroup>
     <NumberFieldIncrement>
