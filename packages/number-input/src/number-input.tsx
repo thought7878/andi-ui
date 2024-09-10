@@ -68,7 +68,7 @@ const NumberField = React.forwardRef<NumberFieldRef, NumberFieldProps>(
       children,
       className,
       btnPosition = 'inside',
-      labelPosition = 'left',
+      labelPosition = 'top',
       locale: customLocale,
       errorMessage,
       validationBehavior = 'native',

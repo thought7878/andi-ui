@@ -450,6 +450,44 @@ By default, displays the error message provided by the browser, which is localiz
 
 ### Custom validation
 
+Custom validation is supported by providing a function to the `validate` prop. This function receives the current field value, and can return a string or array of strings representing one or more error messages. These are displayed to the user after the value is committed (e.g. on blur) to avoid distracting them on each keystroke.
+
+```tsx
+<form className='flex gap-4 flex-col p-8'>
+  <NumberField
+    name='count'
+    validate={(value) => {
+      if (value < 0) {
+        return 'value must be greater than 0';
+      }
+    }}
+  >
+    <NumberFieldLabel>
+      <span className="after:content-['*'] after:ml-0.5 after:text-red-500">
+        Count
+      </span>
+    </NumberFieldLabel>
+    <NumberFieldGroup>
+      <NumberFieldIncrement>
+        <ChevronUpIcon className='h-4 w-4' />
+      </NumberFieldIncrement>
+      <NumberFieldInput />
+      <NumberFieldDecrement>
+        <ChevronDownIcon className='h-4 w-4' />
+      </NumberFieldDecrement>
+    </NumberFieldGroup>
+    <NumberFieldError />
+  </NumberField>
+
+  <div className='flex gap-4 justify-around'>
+    <button type='submit'>submit</button>
+    <button type='reset'>reset</button>
+  </div>
+</form>
+```
+
+![customizing validation](./apps/web/public/customizing_validation.png)
+
 ### Realtime validation
 
 ### Server validation

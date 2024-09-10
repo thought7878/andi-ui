@@ -30,8 +30,6 @@ export default function Page() {
     console.log('amount:', amount);
   };
 
-  const ref = useRef<NumberFieldRef>(null);
-
   const [value, setValue] = useState(0);
   const validateValue = (value: number) => {
     if (value < 0) {
@@ -51,27 +49,25 @@ export default function Page() {
     <div>
       <form
         // action={create}
-        onSubmit={handleSubmit}
+        // onSubmit={handleSubmit}
         className='flex gap-4 flex-col p-8'
       >
         <NumberField
-          ref={ref}
-          name='amount'
-          value={value}
-          onChange={setValue}
-          validationBehavior='native'
+          name='count'
+          // value={value}
+          // onChange={setValue}
           validate={(value) => {
             if (value < 0) {
               return 'value must be greater than 0';
             }
           }}
         >
-          <NumberFieldLabel className=''>
+          <NumberFieldLabel>
             <span className="after:content-['*'] after:ml-0.5 after:text-red-500">
               Count
             </span>
           </NumberFieldLabel>
-          <NumberFieldGroup className=''>
+          <NumberFieldGroup>
             <NumberFieldIncrement>
               <ChevronUpIcon className='h-4 w-4' />
             </NumberFieldIncrement>
@@ -82,7 +78,7 @@ export default function Page() {
           </NumberFieldGroup>
           <NumberFieldError />
         </NumberField>
-        <input
+        {/* <input
           className='border border-gray-200'
           type='text'
           // required
@@ -94,8 +90,11 @@ export default function Page() {
           type='password'
           name='password'
           placeholder='password'
-        />
-        <button type='submit'>submit</button>
+        /> */}
+        <div className='flex gap-4 justify-around'>
+          <button type='submit'>submit</button>
+          <button type='reset'>reset</button>
+        </div>
       </form>
     </div>
   );
