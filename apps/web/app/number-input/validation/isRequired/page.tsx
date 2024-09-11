@@ -52,6 +52,7 @@ export default function Page() {
           name='amount'
           // validationBehavior='native'
           isRequired
+          btnPosition='outside'
           // errorMessage='Error message'
         >
           <NumberFieldLabel>

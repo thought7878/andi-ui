@@ -15,7 +15,7 @@ export default function Page() {
     <div className='pt-10 flex justify-center items-center h-screen'>
       <NumberField
         onChange={(value) => console.log(value)}
-        // onBlur={(event) => console.log(event)}
+        // labelPosition='left'
       >
         <NumberFieldLabel>Amount: </NumberFieldLabel>
         <NumberFieldGroup>

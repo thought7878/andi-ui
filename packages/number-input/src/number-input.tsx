@@ -127,11 +127,10 @@ const NumberField = React.forwardRef<NumberFieldRef, NumberFieldProps>(
           ref={ref as React.ForwardedRef<HTMLDivElement>}
           {...numberFieldProps.groupProps}
           className={cn(
-            'grid grid-cols-1 grid-rows-[auto_1fr_28px] gap-1 items-center',
-            // TODO: which is good ? 'grid grid-cols-1 grid-rows-[auto_auto_auto] gap-1 items-center',
+            'grid',
             labelPosition === 'left'
-              ? 'grid-cols-[auto_1fr] grid-rows-[1fr_28px]'
-              : '',
+              ? 'grid-cols-[auto_1fr] grid-rows-[1fr_auto] gap-x-1'
+              : ' grid-cols-1 grid-rows-[auto_1fr_auto]',
             className
           )}
         >
