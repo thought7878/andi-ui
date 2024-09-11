@@ -186,7 +186,7 @@ const NumberFieldIncrement = React.forwardRef<
         'z-10 rounded-md bg-slate-900 text-slate-50 transition-all enabled:hover:bg-slate-900/60 disabled:cursor-not-allowed disabled:opacity-50',
         btnPosition === 'outside'
           ? 'px-3 py-2'
-          : 'absolute right-0 top-0 flex h-5 w-5 items-center justify-center rounded-b-none p-0 focus-visible:outline-none',
+          : 'absolute right-0 top-0 flex h-1/2 w-5 items-center justify-center rounded-b-none p-0 focus-visible:outline-none',
         className
       )}
       ref={ref}
@@ -217,7 +217,7 @@ const NumberFieldDecrement = React.forwardRef<
         'z-10 rounded-md bg-slate-900 text-slate-50 transition-all enabled:hover:bg-slate-900/60 disabled:cursor-not-allowed disabled:opacity-50',
         btnPosition === 'outside'
           ? 'px-3 py-2'
-          : 'absolute bottom-0 right-0 flex h-5 w-5 items-center justify-center rounded-t-none p-0 focus-visible:outline-none',
+          : 'absolute bottom-0 right-0 flex h-1/2 w-5 items-center justify-center rounded-t-none p-0 focus-visible:outline-none',
         className
       )}
       ref={ref}

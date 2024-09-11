@@ -254,8 +254,6 @@ If the user types a value that is between two steps and blurs the input, the val
 
 The `NumberFieldInput` style can be fully customized.
 
-**Note:** If you want to change the height of the input, you should change the height of the increment and decrement buttons to half the height of the input
-
 ```tsx
 <NumberField>
   <NumberFieldLabel>Amount: </NumberFieldLabel>
@@ -274,8 +272,6 @@ The `NumberFieldInput` style can be fully customized.
 ![input](./apps/web/public/input.png)
 
 ### Behavior
-
-<!-- TODO: update Props link -->
 
 NumberField accepts an `onChange` prop which is triggered whenever the value is committed by the user. This happens on blur of the field or on interaction with the stepper functionality, arrow keys or stepper buttons.
 
@@ -474,13 +470,11 @@ The `NumberFieldLabel` style can be fully customized
 
 ![label](./apps/web/public/label.png)
 
-## Increment & Decrement Buttons
+## Buttons
 
 ### Style
 
 You can fully customize the button style and its children.
-
-**Note:**  If you want to change the height of the input, you should change the height of the increment and decrement buttons to half the height of the input
 
 ```tsx
 <NumberField>
