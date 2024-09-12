@@ -18,6 +18,14 @@
 
 # Install
 
+## Shadcn
+
+```bash
+npx shadcn@latest add "https://v0.dev/chat/b/oTN3LY2"
+```
+
+## Manually
+
 - Make sure that the relevant dependencies of `react-aria` and `react-stately` have been installed.
 
 - Copy the code in `packages/number-input/src/number-input.tsx` to your project.
