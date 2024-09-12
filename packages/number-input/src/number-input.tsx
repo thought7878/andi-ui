@@ -104,8 +104,8 @@ const NumberField = React.forwardRef<NumberFieldRef, NumberFieldProps>(
       numberFieldProps,
     }));
 
-    // TODO: 代码执行，debug不执行
-    console.log('执行了很多次:');
+    // TODO: fix this
+    console.log('many times');
     // console.log('state.realtimeValidation:', state.realtimeValidation);
     // console.log('numberFieldProps.validationErrors888:', numberFieldProps);
     // console.log(
@@ -185,7 +185,7 @@ const NumberFieldIncrement = React.forwardRef<
         'z-10 rounded-md bg-slate-900 text-slate-50 transition-all enabled:hover:bg-slate-900/60 disabled:cursor-not-allowed disabled:opacity-50',
         btnPosition === 'outside'
           ? 'px-3 py-2'
-          : 'absolute right-0 top-0 flex h-1/2 w-6 items-center justify-center rounded-b-none p-0 focus-visible:outline-none',
+          : 'absolute right-0 top-0 h-1/2 w-6 flex items-center justify-center rounded-b-none p-0 focus-visible:outline-none',
         className
       )}
       ref={ref}
@@ -244,12 +244,13 @@ const NumberFieldInput = React.forwardRef<
   }, [inputRef, ref]);
 
   return (
+    // TODO: should change to Input for shadcn
     <input
       ref={inputRef}
       type='number'
       className={cn(
-        'flex h-10 w-full transition-all rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
-        isInvalid && 'focus-visible:ring-red-500',
+        'h-10 w-full transition-all rounded-md border border-slate-200 px-3 py-2 text-sm focus-visible:ring-offset-white placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+        isInvalid && 'focus-visible:ring-destructive',
         className
       )}
       {...inputProps}
@@ -326,7 +327,7 @@ const NumberFieldError = React.forwardRef<
       ref={ref}
       {...errorMessageProps}
       className={cn(
-        'text-red-500',
+        'text-destructive',
         labelPosition === 'left' && 'col-start-2',
         className
       )}
