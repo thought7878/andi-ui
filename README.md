@@ -38,7 +38,7 @@ npx shadcn@latest add "https://v0.dev/chat/b/oTN3LY2"
 
 ```tsx
 <NumberField>
-  <NumberFieldLabel>Amount: </NumberFieldLabel>
+  <NumberFieldLabel>Amount</NumberFieldLabel>
   <NumberFieldGroup>
     <NumberFieldIncrement>
       {/* ChevronUpIcon from 'lucide-react' */}
@@ -203,7 +203,7 @@ A NumberField's `value` is empty by default, but an initial, uncontrolled, val
     let [value, setValue] = React.useState(15);
 
     <NumberField label='defaultValue' defaultValue={8}>
-      <NumberFieldLabel>defaultValue: </NumberFieldLabel>
+      <NumberFieldLabel>defaultValue</NumberFieldLabel>
       <NumberFieldGroup>
         <NumberFieldIncrement>
           <ChevronUpIcon />
@@ -216,7 +216,7 @@ A NumberField's `value` is empty by default, but an initial, uncontrolled, val
     </NumberField>
 
     <NumberField label='value' value={value} onChange={setValue}>
-      <NumberFieldLabel>value: </NumberFieldLabel>
+      <NumberFieldLabel>value</NumberFieldLabel>
       <NumberFieldGroup>
         <NumberFieldIncrement>
           <ChevronUpIcon />
@@ -245,7 +245,7 @@ If the user types a value that is between two steps and blurs the input, the val
 
 ```tsx
 <NumberField label='min-max' minValue={0} maxValue={10} step={3}>
-  <NumberFieldLabel>min-max: </NumberFieldLabel>
+  <NumberFieldLabel>min-max</NumberFieldLabel>
   <NumberFieldGroup>
     <NumberFieldIncrement>
       <ChevronUpIcon />
@@ -264,7 +264,7 @@ The `NumberFieldInput` style can be fully customized.
 
 ```tsx
 <NumberField>
-  <NumberFieldLabel>Amount: </NumberFieldLabel>
+  <NumberFieldLabel>Amount</NumberFieldLabel>
   <NumberFieldGroup>
     <NumberFieldIncrement>
       <ChevronUpIcon />
@@ -287,7 +287,7 @@ NumberField accepts an `onChange` prop which is triggered whenever the value i
 let [value, setValue] = React.useState(0);
 
 <NumberField label='Amount' onChange={setValue} minValue={0}>
-  <NumberFieldLabel>Amount: </NumberFieldLabel>
+  <NumberFieldLabel>Amount</NumberFieldLabel>
   <NumberFieldGroup>
     <NumberFieldIncrement>
       <ChevronUpIcon />
@@ -320,7 +320,7 @@ The following example uses the `signDisplay` option to include the plus sign f
     maximumFractionDigits: 2,
   }}
 >
-  <NumberFieldLabel>Decimals: </NumberFieldLabel>
+  <NumberFieldLabel>Decimals</NumberFieldLabel>
   <NumberFieldGroup>
     <NumberFieldIncrement>
       <ChevronUpIcon />
@@ -344,7 +344,7 @@ The `style: 'percent'` option can be passed to the `formatOptions` prop to t
   minValue={0}
   defaultValue={0.05}
 >
-  <NumberFieldLabel>Percentages: </NumberFieldLabel>
+  <NumberFieldLabel>Percentages</NumberFieldLabel>
   <NumberFieldGroup>
     <NumberFieldIncrement>
       <ChevronUpIcon />
@@ -374,7 +374,7 @@ If you need to allow the user to change the currency, you should include a separ
     currencySign: 'accounting',
   }}
 >
-  <NumberFieldLabel>Currency: </NumberFieldLabel>
+  <NumberFieldLabel>Currency</NumberFieldLabel>
   <NumberFieldGroup>
     <NumberFieldIncrement>
       <ChevronUpIcon />
@@ -406,7 +406,7 @@ If you need to allow the user to change the unit, you should include a separate 
     unitDisplay: 'long',
   }}
 >
-  <NumberFieldLabel>Units: </NumberFieldLabel>
+  <NumberFieldLabel>Units</NumberFieldLabel>
   <NumberFieldGroup>
     <NumberFieldIncrement>
       <ChevronUpIcon />
@@ -426,7 +426,7 @@ The `isDisabled` and `isReadOnly` props can be used prevent the user from ed
 ```tsx
 <>
   <NumberField label='Disabled' isDisabled value={25}>
-    <NumberFieldLabel>Disabled: </NumberFieldLabel>
+    <NumberFieldLabel>Disabled</NumberFieldLabel>
     <NumberFieldGroup>
       <NumberFieldIncrement>
         <ChevronUpIcon />
@@ -439,7 +439,7 @@ The `isDisabled` and `isReadOnly` props can be used prevent the user from ed
   </NumberField>
 
   <NumberField label='Read only' isReadOnly value={28}>
-    <NumberFieldLabel>Read only: </NumberFieldLabel>
+    <NumberFieldLabel>Read only</NumberFieldLabel>
     <NumberFieldGroup>
       <NumberFieldIncrement>
         <ChevronUpIcon />
@@ -463,7 +463,7 @@ The `NumberFieldLabel` style can be fully customized
 
 ```tsx
 <NumberField label='Amount'>
-  <NumberFieldLabel className='text-blue-500 text-lg'>Amount:</NumberFieldLabel>
+  <NumberFieldLabel className='text-blue-500 text-lg'>Amount</NumberFieldLabel>
   <NumberFieldGroup>
     <NumberFieldIncrement>
       <ChevronUpIcon />
@@ -486,7 +486,7 @@ You can fully customize the button style and its children.
 
 ```tsx
 <NumberField>
-  <NumberFieldLabel>Amount: </NumberFieldLabel>
+  <NumberFieldLabel>Amount</NumberFieldLabel>
   <NumberFieldGroup>
     {/* customize the increment button's style */}
     <NumberFieldIncrement className='bg-blue-500'>
@@ -511,7 +511,7 @@ You can fully customize the button style and its children.
 
 ```tsx
 <NumberField btnPosition='outside'>
-  <NumberFieldLabel>Amount: </NumberFieldLabel>
+  <NumberFieldLabel>Amount</NumberFieldLabel>
   <NumberFieldGroup>
     <NumberFieldIncrement>
       <ChevronUpIcon />

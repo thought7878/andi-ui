@@ -12,7 +12,7 @@ export default function Page() {
   return (
     <div className='pt-10 flex justify-center items-center h-screen'>
       <NumberField btnPosition='outside' labelPosition='top'>
-        <NumberFieldLabel>Amount: </NumberFieldLabel>
+        <NumberFieldLabel>Amount</NumberFieldLabel>
         <NumberFieldGroup>
           <NumberFieldIncrement>
             <ChevronUpIcon />

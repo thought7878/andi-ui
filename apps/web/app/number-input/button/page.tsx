@@ -12,7 +12,7 @@ export default function Page() {
   return (
     <div className='pt-10 flex justify-center items-center h-screen'>
       <NumberField>
-        <NumberFieldLabel>Amount: </NumberFieldLabel>
+        <NumberFieldLabel>Amount</NumberFieldLabel>
         <NumberFieldGroup>
           <NumberFieldIncrement className='bg-blue-500'>
             {/* customize the increment button's icon */}

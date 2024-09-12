@@ -13,7 +13,7 @@ export default function Page() {
     <div className='pt-10 flex justify-center items-center h-screen'>
       <NumberField label='Amount' labelPosition='top'>
         <NumberFieldLabel className='text-blue-500 text-lg'>
-          Amount:
+          Amount
         </NumberFieldLabel>
         <NumberFieldGroup>
           <NumberFieldIncrement>

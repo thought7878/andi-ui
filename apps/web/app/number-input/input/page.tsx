@@ -17,7 +17,7 @@ export default function Page() {
         onChange={(value) => console.log(value)}
         // labelPosition='left'
       >
-        <NumberFieldLabel>Amount: </NumberFieldLabel>
+        <NumberFieldLabel>Amount</NumberFieldLabel>
         <NumberFieldGroup>
           <NumberFieldIncrement>
             <ChevronUpIcon />
