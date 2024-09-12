@@ -14,19 +14,9 @@ import {
   NumberFieldStateOptions,
   useNumberFieldState,
 } from 'react-stately';
-// import {ValidationResult} from '@react-types/shared';
+import { type ValidationResult } from '@react-types/shared';
 
-import { cn } from './lib/utils';
-
-// TODO: need to be fixed
-export interface ValidationResult {
-  /** Whether the input value is invalid. */
-  isInvalid: boolean;
-  /** The current error messages for the input if it is invalid, otherwise an empty array. */
-  validationErrors: string[];
-  /** The native validation details for the input. */
-  validationDetails: ValidityState;
-}
+import { cn } from '@/lib/utils';
 
 interface NumberFieldContextValue {
   numberFieldProps: NumberFieldAria;
@@ -35,7 +25,6 @@ interface NumberFieldContextValue {
   labelPosition?: 'left' | 'top';
   errorMessage?: React.ReactNode | ((v: ValidationResult) => React.ReactNode);
 }
-
 const NumberFieldContext = React.createContext<NumberFieldContextValue>(
   {} as NumberFieldContextValue
 );
@@ -289,12 +278,12 @@ NumberFieldLabel.displayName = 'NumberFieldLabel';
 
 type NumberFieldErrorProps = {
   className?: string;
-  children?: React.ReactNode;
+  // children?: React.ReactNode;
 };
 const NumberFieldError = React.forwardRef<
   HTMLDivElement,
   NumberFieldErrorProps
->(({ className, children }, ref) => {
+>(({ className }, ref) => {
   const {
     numberFieldProps: {
       errorMessageProps,
@@ -367,7 +356,7 @@ type ButtonProps = AriaButtonOptions<React.ElementType> & {
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, ...props }, ref) => {
-    let { buttonProps } = useButton(
+    const { buttonProps } = useButton(
       props,
       ref as React.RefObject<HTMLButtonElement | null>
     );
