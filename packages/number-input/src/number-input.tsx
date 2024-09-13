@@ -15,6 +15,7 @@ import {
   useNumberFieldState,
 } from 'react-stately';
 import { type ValidationResult } from '@react-types/shared';
+import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
@@ -156,7 +157,7 @@ NumberFieldGroup.displayName = 'NumberFieldGroup';
 
 type NumberFieldIncrementProps = {
   className?: string;
-  children: React.ReactNode; // TODO: 应有默认值，为可选
+  children?: React.ReactNode;
 };
 const NumberFieldIncrement = React.forwardRef<
   HTMLButtonElement,
@@ -179,14 +180,14 @@ const NumberFieldIncrement = React.forwardRef<
       )}
       ref={ref}
     >
-      {children}
+      {children || <ChevronUpIcon className='h-4 w-4' />}
     </Button>
   );
 });
 NumberFieldIncrement.displayName = 'NumberFieldIncrement';
 
 type NumberFieldDecrementProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 };
 const NumberFieldDecrement = React.forwardRef<
@@ -210,7 +211,7 @@ const NumberFieldDecrement = React.forwardRef<
       )}
       ref={ref}
     >
-      {children}
+      {children || <ChevronDownIcon className='h-4 w-4' />}
     </Button>
   );
 });

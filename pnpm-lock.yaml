@@ -158,6 +158,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      lucide-react:
+        specifier: ^0.436.0
+        version: 0.436.0(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -6711,6 +6714,10 @@ snapshots:
       yallist: 3.1.1
 
   lru-cache@7.18.3: {}
+
+  lucide-react@0.436.0(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   lucide-react@0.436.0(react@19.0.0-rc-f994737d14-20240522):
     dependencies:
