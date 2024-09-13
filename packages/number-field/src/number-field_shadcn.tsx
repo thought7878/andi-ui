@@ -1,272 +1,95 @@
 'use client';
 
 import * as React from 'react';
-import {
-  AriaButtonOptions,
-  AriaNumberFieldProps,
-  type NumberFieldAria,
-  useButton,
-  useLocale,
-  useNumberField,
-} from 'react-aria';
-import { NumberFieldStateOptions, useNumberFieldState } from 'react-stately';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import * as NumberFieldPrimitive from '@react-aria/numberfield';
+import { useNumberFieldState } from '@react-stately/numberfield';
+import { useLocale } from '@react-aria/i18n';
 
-import { cn } from './lib/utils';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
-interface NumberFieldContextValue {
-  numberFieldProps: NumberFieldAria;
-  inputRef?: React.RefObject<HTMLInputElement>;
-  btnPosition?: 'inside' | 'outside';
-  labelPosition?: 'left' | 'top';
-}
-
-const NumberFieldContext = React.createContext<NumberFieldContextValue>(
-  {} as NumberFieldContextValue
-);
-
-const useNumberFieldContext = () => {
-  const numberFieldContext = React.useContext(NumberFieldContext);
-  if (!numberFieldContext) {
-    throw new Error(
-      'useNumberFieldContext should be used within <NumberField>'
-    );
-  }
-  return numberFieldContext;
-};
-
-type NumberFieldProps = React.PropsWithChildren<
-  Partial<AriaNumberFieldProps> & {
-    name?: string;
-    className?: string;
-    btnPosition?: 'inside' | 'outside';
-    labelPosition?: 'left' | 'top';
-  } & Partial<Pick<NumberFieldStateOptions, 'locale'>>
->;
-const NumberField = React.forwardRef<HTMLDivElement, NumberFieldProps>(
-  (
-    {
-      children,
-      className,
-      btnPosition = 'inside',
-      labelPosition = 'left',
-      locale: customLocale,
-      ...props
-    },
-    ref
-  ) => {
-    const hookLocale = useLocale().locale;
-    const locale = customLocale || hookLocale;
-    // TODO: If label is empty, numberFieldProps.labelProps is empty. Because of using NumberFieldLabel, so props.label need default value
-    props.label = props.label || props.name || 'label';
-
-    const state = useNumberFieldState({ ...props, locale });
-
-    // TODO: Incompatible with react-aria
-    const inputRef = React.useRef<HTMLInputElement>(null);
-    const numberFieldProps = useNumberField(props, state, inputRef);
-
-    numberFieldProps.inputProps.name = props.name;
-
-    return (
-      <NumberFieldContext.Provider
-        value={{ numberFieldProps, inputRef, btnPosition, labelPosition }}
-      >
-        <div
-          ref={ref}
-          {...numberFieldProps.groupProps}
-          className={cn(
-            labelPosition === 'left' ? 'flex items-center gap-1' : '',
-            className
-          )}
-        >
-          {children}
-        </div>
-      </NumberFieldContext.Provider>
-    );
-  }
-);
-NumberField.displayName = 'NumberField';
-
-type NumberFieldGroupProps = {
-  className?: string;
-  children: React.ReactNode;
-};
-const NumberFieldGroup = React.forwardRef<
+const NumberField = React.forwardRef<
   HTMLDivElement,
-  NumberFieldGroupProps
->(({ className, children }, ref) => {
+  React.ComponentPropsWithoutRef<typeof NumberFieldPrimitive.NumberField> & {
+    className?: string;
+    buttonPosition?: 'inside' | 'outside';
+  }
+>(({ className, buttonPosition = 'inside', ...props }, ref) => {
+  const { locale } = useLocale();
+  const state = useNumberFieldState({ ...props, locale });
   const {
-    numberFieldProps: { groupProps },
-  } = useNumberFieldContext();
+    labelProps,
+    groupProps,
+    inputProps,
+    incrementButtonProps,
+    decrementButtonProps,
+  } = NumberFieldPrimitive.useNumberField(props, state, React.useRef(null));
+
   return (
     <div
       ref={ref}
-      className={cn('relative flex gap-1', className)}
-      {...groupProps}
+      className={cn('grid w-full max-w-sm items-center gap-1.5', className)}
     >
-      {children}
+      <Label {...labelProps}>{props.label}</Label>
+      <div {...groupProps} className='flex'>
+        {buttonPosition === 'outside' && (
+          <Button
+            variant='outline'
+            size='icon'
+            {...decrementButtonProps}
+            className='rounded-r-none'
+          >
+            <ChevronDown className='h-4 w-4' />
+          </Button>
+        )}
+        <div className='relative flex-1'>
+          <Input
+            type='number'
+            {...inputProps}
+            className={cn(
+              'pr-8',
+              buttonPosition === 'outside' &&
+                'rounded-l-none rounded-r-none border-l-0 border-r-0'
+            )}
+          />
+          {buttonPosition === 'inside' && (
+            <>
+              <Button
+                variant='ghost'
+                size='icon'
+                {...incrementButtonProps}
+                className='absolute right-0 top-0 h-1/2 w-8 rounded-bl-none rounded-tl-none border-l'
+              >
+                <ChevronUp className='h-3 w-3' />
+              </Button>
+              <Button
+                variant='ghost'
+                size='icon'
+                {...decrementButtonProps}
+                className='absolute bottom-0 right-0 h-1/2 w-8 rounded-tl-none rounded-tr-none border-l border-t'
+              >
+                <ChevronDown className='h-3 w-3' />
+              </Button>
+            </>
+          )}
+        </div>
+        {buttonPosition === 'outside' && (
+          <Button
+            variant='outline'
+            size='icon'
+            {...incrementButtonProps}
+            className='rounded-l-none'
+          >
+            <ChevronUp className='h-4 w-4' />
+          </Button>
+        )}
+      </div>
     </div>
   );
 });
-NumberFieldGroup.displayName = 'NumberFieldGroup';
+NumberField.displayName = 'NumberField';
 
-type NumberFieldLabelProps = {
-  className?: string;
-  children: React.ReactNode;
-};
-const NumberFieldLabel = React.forwardRef<
-  HTMLLabelElement,
-  NumberFieldLabelProps
->(({ className, children }, ref) => {
-  const {
-    numberFieldProps: { labelProps },
-    labelPosition,
-  } = useNumberFieldContext();
-
-  return (
-    <label
-      ref={ref}
-      {...labelProps}
-      className={cn(
-        labelPosition === 'left' ? 'flex items-center justify-center' : '',
-        className
-      )}
-    >
-      {children}
-    </label>
-  );
-});
-NumberFieldLabel.displayName = 'NumberFieldLabel';
-
-type NumberFieldIncrementProps = {
-  className?: string;
-  children: React.ReactNode;
-};
-const NumberFieldIncrement = React.forwardRef<
-  HTMLButtonElement,
-  NumberFieldIncrementProps
->(({ className, children }, ref) => {
-  const {
-    numberFieldProps: { incrementButtonProps },
-    btnPosition,
-  } = useNumberFieldContext();
-
-  return (
-    <Button
-      {...incrementButtonProps}
-      className={cn(
-        'z-10 rounded-md bg-primary text-primary-foreground transition-all enabled:hover:bg-primary/60 disabled:cursor-not-allowed disabled:opacity-50',
-        btnPosition === 'outside'
-          ? 'px-3 py-2'
-          : 'absolute right-0 top-0 flex h-5 w-5 items-center justify-center rounded-b-none p-0 focus-visible:outline-none',
-        className
-      )}
-      ref={ref}
-    >
-      {children}
-    </Button>
-  );
-});
-NumberFieldIncrement.displayName = 'NumberFieldIncrement';
-
-type NumberFieldDecrementProps = {
-  children: React.ReactNode;
-  className?: string;
-};
-const NumberFieldDecrement = React.forwardRef<
-  HTMLButtonElement,
-  NumberFieldDecrementProps
->(({ className, children }, ref) => {
-  const {
-    numberFieldProps: { decrementButtonProps },
-    btnPosition,
-  } = useNumberFieldContext();
-
-  return (
-    <Button
-      {...decrementButtonProps}
-      className={cn(
-        'z-10 rounded-md bg-primary text-primary-foreground transition-all enabled:hover:bg-primary/60 disabled:cursor-not-allowed disabled:opacity-50',
-        btnPosition === 'outside'
-          ? 'px-3 py-2'
-          : 'absolute bottom-0 right-0 flex h-5 w-5 items-center justify-center rounded-t-none p-0 focus-visible:outline-none',
-        className
-      )}
-      ref={ref}
-    >
-      {children}
-    </Button>
-  );
-});
-NumberFieldDecrement.displayName = 'NumberFieldDecrement';
-
-type NumberFieldInputProps = { className?: string };
-const NumberFieldInput = React.forwardRef<
-  HTMLInputElement,
-  NumberFieldInputProps
->(({ className }, ref) => {
-  const {
-    numberFieldProps: { inputProps },
-    inputRef,
-  } = useNumberFieldContext();
-
-  React.useEffect(() => {
-    if (ref && 'current' in ref && inputRef?.current) {
-      ref.current = inputRef?.current;
-    }
-  }, [inputRef, ref]);
-
-  return (
-    <input
-      ref={inputRef}
-      type='number'
-      className={cn(
-        'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
-        className
-      )}
-      {...inputProps}
-    />
-  );
-});
-NumberFieldInput.displayName = 'NumberFieldInput';
-
-export {
-  NumberField,
-  NumberFieldDecrement,
-  NumberFieldGroup,
-  NumberFieldIncrement,
-  NumberFieldInput,
-  NumberFieldLabel,
-};
-
-export type {
-  NumberFieldDecrementProps,
-  NumberFieldGroupProps,
-  NumberFieldIncrementProps,
-  NumberFieldInputProps,
-  NumberFieldLabelProps,
-  NumberFieldProps,
-};
-
-type ButtonProps = AriaButtonOptions<React.ElementType> & {
-  children: React.ReactNode;
-  className?: string;
-  ref?: React.RefObject<HTMLButtonElement | null>;
-};
-
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, ...props }, ref) => {
-    let { buttonProps } = useButton(
-      props,
-      ref as React.RefObject<HTMLButtonElement | null>
-    );
-
-    return (
-      <button {...buttonProps} ref={ref} className={className}>
-        {props.children}
-      </button>
-    );
-  }
-);
-
-Button.displayName = 'Button';
+export { NumberField };

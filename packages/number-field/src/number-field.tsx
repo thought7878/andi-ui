@@ -175,7 +175,7 @@ const NumberFieldIncrement = React.forwardRef<
         'z-10 rounded-md bg-slate-900 text-slate-50 transition-all enabled:hover:bg-slate-900/60 disabled:cursor-not-allowed disabled:opacity-50',
         btnPosition === 'outside'
           ? 'px-3 py-2'
-          : 'absolute right-0 top-0 h-1/2 w-6 flex items-center justify-center rounded-b-none p-0 focus-visible:outline-none',
+          : 'absolute right-0 top-0 flex h-1/2 w-6 items-center justify-center rounded-b-none p-0 focus-visible:outline-none',
         className
       )}
       ref={ref}
@@ -239,7 +239,7 @@ const NumberFieldInput = React.forwardRef<
       ref={inputRef}
       type='number'
       className={cn(
-        'h-10 w-full transition-all rounded-md border border-slate-200 px-3 py-2 text-sm focus-visible:ring-offset-white placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+        'h-10 w-full rounded-md border border-slate-200 px-3 py-2 text-sm transition-all placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50',
         isInvalid && 'focus-visible:ring-destructive',
         className
       )}
