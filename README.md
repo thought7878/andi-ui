@@ -1,6 +1,6 @@
-# Anatomy of number-input
+# Anatomy of number-field
 
-`number-input` is a composite component used to create a number input field with custom buttons (for increment and decrement), labels, and an input. It is built based on the `react-aria` and `react-stately` libraries and provides a highly customizable user experience and accessibility. This component set includes the following subcomponents:
+`number-field` is a composite component used to create a number input field with custom buttons (for increment and decrement), labels, and an input. It is built based on the `react-aria` and `react-stately` libraries and provides a highly customizable user experience and accessibility. This component set includes the following subcomponents:
 
 ```tsx
 <NumberField name="..." value="..." onChange={...} className="...">
@@ -28,7 +28,7 @@ npx shadcn@latest add "https://v0.dev/chat/b/oTN3LY2"
 
 - Make sure that the relevant dependencies of `react-aria` and `react-stately` have been installed.
 
-- Copy the code in `packages/number-input/src/number-input.tsx` to your project.
+- Copy the code in `packages/number-field/src/number-field.tsx` to your project.
 
 - Then import the required modules in your component file.
 

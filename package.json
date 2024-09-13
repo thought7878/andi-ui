@@ -1,5 +1,5 @@
 {
-  "name": "number-input",
+  "name": "number-field",
   "private": true,
   "scripts": {
     "build": "turbo build",
