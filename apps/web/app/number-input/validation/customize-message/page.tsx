@@ -55,8 +55,6 @@ export default function Page() {
         className='flex gap-4 flex-col p-8'
       >
         <NumberField
-          ref={ref}
-          labelPosition='top'
           name='amount'
           isRequired
           // errorMessage='This is required'
