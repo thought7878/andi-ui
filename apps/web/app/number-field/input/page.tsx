@@ -19,11 +19,11 @@ export default function Page() {
       >
         <NumberFieldLabel>Amount</NumberFieldLabel>
         <NumberFieldGroup>
-          <NumberFieldIncrement>
+          <NumberFieldIncrement className='border-blue-500'>
             <ChevronUpIcon />
           </NumberFieldIncrement>
           <NumberFieldInput className='border-blue-500 w-[500px] focus-visible:ring-blue-500' />
-          <NumberFieldDecrement>
+          <NumberFieldDecrement className='border-blue-500'>
             <ChevronDownIcon />
           </NumberFieldDecrement>
         </NumberFieldGroup>

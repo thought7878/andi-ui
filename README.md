@@ -40,15 +40,10 @@ npx shadcn@latest add "https://v0.dev/chat/b/oTN3LY2"
 <NumberField>
   <NumberFieldLabel>Amount</NumberFieldLabel>
   <NumberFieldGroup>
-    <NumberFieldIncrement>
-      {/* ChevronUpIcon from 'lucide-react' */}
-      <ChevronUpIcon />
+    <NumberFieldIncrement />
     </NumberFieldIncrement>
     <NumberFieldInput />
-    <NumberFieldDecrement>
-      {/* ChevronDownIcon from 'lucide-react' */}
-      <ChevronDownIcon />
-    </NumberFieldDecrement>
+    <NumberFieldDecrement />
   </NumberFieldGroup>
 </NumberField>
 ```
@@ -266,11 +261,11 @@ The `NumberFieldInput` style can be fully customized.
 <NumberField>
   <NumberFieldLabel>Amount</NumberFieldLabel>
   <NumberFieldGroup>
-    <NumberFieldIncrement>
+    <NumberFieldIncrement className='border-blue-500'>
       <ChevronUpIcon />
     </NumberFieldIncrement>
     <NumberFieldInput className='border-blue-500 w-[500px] focus-visible:ring-blue-500' />
-    <NumberFieldDecrement>
+    <NumberFieldDecrement className='border-blue-500'>
       <ChevronDownIcon />
     </NumberFieldDecrement>
   </NumberFieldGroup>
@@ -489,13 +484,13 @@ You can fully customize the button style and its children.
   <NumberFieldLabel>Amount</NumberFieldLabel>
   <NumberFieldGroup>
     {/* customize the increment button's style */}
-    <NumberFieldIncrement className='bg-blue-500'>
+    <NumberFieldIncrement className='bg-blue-500 text-white'>
       {/* customize the increment button's icon */}
       <ChevronUpIcon />
     </NumberFieldIncrement>
     <NumberFieldInput />
     {/* customize the decrement button's style */}
-    <NumberFieldDecrement className='bg-blue-500'>
+    <NumberFieldDecrement className='bg-blue-500 text-white'>
       {/* customize the decrement button's icon */}
       <ChevronDownIcon />
     </NumberFieldDecrement>
@@ -590,7 +585,7 @@ By default, displays the error message provided by the browser, which is localiz
     <NumberFieldError />
   </NumberField>
 
-  <div className='flex gap-4 justify-around'>
+  <div className='flex gap-4 jus tify-around'>
     <button type='submit'>submit</button>
     <button type='reset'>reset</button>
   </div>

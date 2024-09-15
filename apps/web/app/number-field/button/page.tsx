@@ -14,12 +14,12 @@ export default function Page() {
       <NumberField>
         <NumberFieldLabel>Amount</NumberFieldLabel>
         <NumberFieldGroup>
-          <NumberFieldIncrement className='bg-blue-500'>
+          <NumberFieldIncrement className='bg-blue-500 text-white'>
             {/* customize the increment button's icon */}
             <ChevronUpIcon />
           </NumberFieldIncrement>
           <NumberFieldInput />
-          <NumberFieldDecrement className='bg-blue-500'>
+          <NumberFieldDecrement className='bg-blue-500 text-white'>
             {/* customize the decrement button's icon */}
             <ChevronDownIcon />
           </NumberFieldDecrement>

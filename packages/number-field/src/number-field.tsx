@@ -91,19 +91,8 @@ const NumberField = React.forwardRef<NumberFieldRef, NumberFieldProps>(
     // TODO: Incompatible with react-aria
     numberFieldProps.inputProps.name = props.name;
 
-    React.useImperativeHandle(ref, () => ({
-      state,
-      numberFieldProps,
-    }));
-
     // TODO: fix this
     console.log('many times');
-    // console.log('state.realtimeValidation:', state.realtimeValidation);
-    // console.log('numberFieldProps.validationErrors888:', numberFieldProps);
-    // console.log(
-    //   'numberFieldProps.validationDetails:',
-    //   numberFieldProps.validationDetails
-    // );
 
     return (
       <NumberFieldContext.Provider
