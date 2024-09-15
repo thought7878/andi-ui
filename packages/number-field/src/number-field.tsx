@@ -18,6 +18,7 @@ import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 interface NumberFieldContextValue {
   numberFieldProps: NumberFieldAria;
@@ -244,15 +245,11 @@ const NumberFieldInput = React.forwardRef<
   }, [inputRef, ref]);
 
   return (
-    // TODO: should change to Input for shadcn
-    <input
+    <Input
       ref={inputRef}
       type='number'
-      className={cn(
-        'h-10 w-full rounded-md border border-slate-200 px-3 py-2 text-sm transition-all placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50',
-        isInvalid && 'focus-visible:ring-destructive',
-        className
-      )}
+      // TODO: cn is nessary?
+      className={cn(isInvalid && 'focus-visible:ring-destructive', className)}
       {...inputProps}
     />
   );
