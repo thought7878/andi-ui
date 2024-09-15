@@ -16,7 +16,7 @@ export default function Page() {
     <div className='pt-10 flex flex-col pl-10 gap-8 h-screen'>
       <NumberField
         label='Currency'
-        defaultValue={45}
+        defaultValue={1888}
         formatOptions={{
           style: 'currency',
           currency: 'EUR',

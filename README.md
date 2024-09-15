@@ -16,6 +16,16 @@
 
 ![introduction](./apps/web/public/introduction.png)
 
+## Features
+
+- Customizable styling: Each sub-component accepts a `className` prop for additional styling customization.
+- Accessibility: The component uses React Aria's `useNumberField` hook, ensuring accessibility standards are met.
+- Compound component structure: The NumberField is composed of several sub-components (Group, Increment, Decrement, Input, Label, Error) for flexible usage and composition.
+- Customizable button positions: The component allows for "inside" or "outside" button placement for increment and decrement controls.
+- Flexible label positioning: Users can choose between "left" or "top" label placement.
+- Internationalization support: The component uses the `useLocale` hook from React Aria, allowing for locale-specific number formatting.
+- Error handling and validation: The component includes error message display functionality and supports custom validation behavior.
+
 # Install
 
 ## Shadcn
