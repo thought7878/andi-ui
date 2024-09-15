@@ -19,6 +19,7 @@ import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import clsx from 'clsx';
 
 interface NumberFieldContextValue {
   numberFieldProps: NumberFieldAria;
@@ -176,7 +177,7 @@ const NumberFieldIncrement = React.forwardRef<
 
   return (
     <Button
-      className={cn(
+      className={clsx(
         btnPosition === 'outside'
           ? 'px-3 py-2'
           : 'absolute right-0 top-0 z-10 flex h-1/2 w-6 items-center justify-center rounded-b-none p-0 focus-visible:outline-none',
@@ -212,7 +213,7 @@ const NumberFieldDecrement = React.forwardRef<
 
   return (
     <Button
-      className={cn(
+      className={clsx(
         btnPosition === 'outside'
           ? 'px-3 py-2'
           : 'absolute bottom-0 right-0 z-10 flex h-1/2 w-6 items-center justify-center rounded-t-none p-0 focus-visible:outline-none',
@@ -248,8 +249,10 @@ const NumberFieldInput = React.forwardRef<
     <Input
       ref={inputRef}
       type='number'
-      // TODO: cn is nessary?
-      className={cn(isInvalid && 'focus-visible:ring-destructive', className)}
+      className={clsx(
+        { 'focus-visible:ring-destructive': isInvalid },
+        className
+      )}
       {...inputProps}
     />
   );
@@ -274,7 +277,7 @@ const NumberFieldLabel = React.forwardRef<
       ref={ref}
       {...labelProps}
       className={cn(
-        labelPosition === 'left' ? 'flex items-center justify-center' : '',
+        labelPosition === 'left' && 'flex items-center justify-center',
         className
       )}
     >

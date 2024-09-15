@@ -63,6 +63,7 @@ export default function Page() {
               return <p>This is required</p>;
             }
           }}
+          labelPosition='left'
         >
           <NumberFieldLabel className=''>
             <span className="after:content-['*'] after:ml-0.5 after:text-red-500">
