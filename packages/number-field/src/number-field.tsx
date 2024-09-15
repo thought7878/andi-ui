@@ -178,6 +178,7 @@ const NumberFieldIncrement = React.forwardRef<
   return (
     <Button
       className={clsx(
+        'focus-visible:ring-0 focus-visible:ring-offset-0',
         btnPosition === 'outside'
           ? 'px-3 py-2'
           : 'absolute right-0 top-0 z-10 flex h-1/2 w-6 items-center justify-center rounded-b-none p-0 focus-visible:outline-none',
@@ -214,6 +215,7 @@ const NumberFieldDecrement = React.forwardRef<
   return (
     <Button
       className={clsx(
+        'focus-visible:ring-0 focus-visible:ring-offset-0',
         btnPosition === 'outside'
           ? 'px-3 py-2'
           : 'absolute bottom-0 right-0 z-10 flex h-1/2 w-6 items-center justify-center rounded-t-none p-0 focus-visible:outline-none',
