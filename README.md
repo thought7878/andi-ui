@@ -1,6 +1,8 @@
 # Anatomy of number-field
 
-`number-field` is a composite component used to create a number input field with custom buttons (for increment and decrement), labels, and an input. It is built based on the `react-aria` and `react-stately` libraries and provides a highly customizable user experience and accessibility. This component set includes the following subcomponents:
+The NumberField component is a flexible and accessible input field for numerical values, built with React and integrated with shadcn/ui. It offers customizable increment and decrement buttons, supports various layouts, and includes built-in error handling and validation. This component is designed to be highly adaptable, making it suitable for a wide range of applications where numerical input is required.
+
+This component set includes the following sub-components:
 
 ```tsx
 <NumberField name="..." value="..." onChange={...} className="...">
@@ -18,13 +20,14 @@
 
 ## Features
 
-- Customizable styling: Each sub-component accepts a `className` prop for additional styling customization.
-- Accessibility: The component uses React Aria's `useNumberField` hook, ensuring accessibility standards are met.
-- Compound component structure: The NumberField is composed of several sub-components (Group, Increment, Decrement, Input, Label, Error) for flexible usage and composition.
-- Customizable button positions: The component allows for "inside" or "outside" button placement for increment and decrement controls.
-- Flexible label positioning: Users can choose between "left" or "top" label placement.
-- Internationalization support: The component uses the `useLocale` hook from React Aria, allowing for locale-specific number formatting.
-- Error handling and validation: The component includes error message display functionality and supports custom validation behavior.
+Key features include:
+
+1. Customizable button placement (inside or outside the input)
+2. Flexible label positioning
+3. Internationalization support
+4. Accessibility features using React Aria
+5. Integration with shadcn/ui components and styling
+6. Compound component structure for easy customization
 
 # Install
 
