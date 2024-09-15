@@ -30,6 +30,17 @@ export default function Home() {
           <Link href={'/number-field/form'}>HTML form</Link>
         </div>
       </div>
+      <div>
+        <div>Validation:</div>
+        <div className='flex gap-4'>
+          <Link href={'/number-field/validation/customize-message'}>
+            customize message
+          </Link>
+          <Link href={'/number-field/validation/customize-validation'}>
+            customize validation
+          </Link>
+        </div>
+      </div>
 
       <Link href={'/number-field/button'}>button</Link>
     </main>

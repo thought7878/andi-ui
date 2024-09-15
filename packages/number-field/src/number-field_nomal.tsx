@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import {
+  AriaButtonOptions,
   AriaNumberFieldProps,
   type NumberFieldAria,
   useButton,
@@ -17,7 +18,6 @@ import { type ValidationResult } from '@react-types/shared';
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
 
 interface NumberFieldContextValue {
   numberFieldProps: NumberFieldAria;
@@ -168,21 +168,16 @@ const NumberFieldIncrement = React.forwardRef<
     btnPosition,
   } = useNumberFieldContext();
 
-  const { buttonProps } = useButton(
-    incrementButtonProps,
-    ref as React.RefObject<HTMLButtonElement | null>
-  );
-
   return (
     <Button
+      {...incrementButtonProps}
       className={cn(
+        'z-10 rounded-md bg-slate-900 text-slate-50 transition-all enabled:hover:bg-slate-900/60 disabled:cursor-not-allowed disabled:opacity-50',
         btnPosition === 'outside'
           ? 'px-3 py-2'
-          : 'absolute right-0 top-0 z-10 flex h-1/2 w-6 items-center justify-center rounded-b-none p-0 focus-visible:outline-none',
+          : 'absolute right-0 top-0 flex h-1/2 w-6 items-center justify-center rounded-b-none p-0 focus-visible:outline-none',
         className
       )}
-      variant='outline'
-      {...buttonProps}
       ref={ref}
     >
       {children || <ChevronUpIcon className='h-4 w-4' />}
@@ -204,21 +199,16 @@ const NumberFieldDecrement = React.forwardRef<
     btnPosition,
   } = useNumberFieldContext();
 
-  const { buttonProps } = useButton(
-    decrementButtonProps,
-    ref as React.RefObject<HTMLButtonElement | null>
-  );
-
   return (
     <Button
+      {...decrementButtonProps}
       className={cn(
+        'z-10 rounded-md bg-slate-900 text-slate-50 transition-all enabled:hover:bg-slate-900/60 disabled:cursor-not-allowed disabled:opacity-50',
         btnPosition === 'outside'
           ? 'px-3 py-2'
-          : 'absolute bottom-0 right-0 z-10 flex h-1/2 w-6 items-center justify-center rounded-t-none p-0 focus-visible:outline-none',
+          : 'absolute bottom-0 right-0 flex h-1/2 w-6 items-center justify-center rounded-t-none p-0 focus-visible:outline-none',
         className
       )}
-      variant='outline'
-      {...buttonProps}
       ref={ref}
     >
       {children || <ChevronDownIcon className='h-4 w-4' />}
@@ -358,3 +348,26 @@ export type {
   NumberFieldLabelProps,
   NumberFieldErrorProps,
 };
+
+type ButtonProps = AriaButtonOptions<React.ElementType> & {
+  children: React.ReactNode;
+  className?: string;
+  ref?: React.RefObject<HTMLButtonElement | null>;
+};
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, ...props }, ref) => {
+    const { buttonProps } = useButton(
+      props,
+      ref as React.RefObject<HTMLButtonElement | null>
+    );
+
+    return (
+      <button {...buttonProps} ref={ref} className={className}>
+        {props.children}
+      </button>
+    );
+  }
+);
+
+Button.displayName = 'Button';
