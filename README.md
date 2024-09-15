@@ -634,7 +634,7 @@ Custom validation is supported by providing a function to the `validate` prop.
 
 ![customizing validation](./apps/web/public/customizing_validation.png)
 
-# Props Reference
+# API Reference
 
 ## NumberFieldProps
 
