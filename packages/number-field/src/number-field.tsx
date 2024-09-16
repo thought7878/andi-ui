@@ -92,7 +92,7 @@ const NumberField = React.forwardRef<NumberFieldRef, NumberFieldProps>(
     numberFieldProps.inputProps.name = props.name;
 
     // TODO: fix this
-    console.log('many times');
+    // console.log('many times');
 
     return (
       <NumberFieldContext.Provider

@@ -34,7 +34,7 @@ Key features include:
 ## Shadcn
 
 ```bash
-npx shadcn@latest add "https://v0.dev/chat/b/oTN3LY2"
+npx shadcn@latest add "https://v0.dev/chat/b/jkZcwYy"
 ```
 
 ## Manually
@@ -467,7 +467,7 @@ For better accessibility, a label should be added to `NumberField`
 
 ### Style & Position
 
-The `NumberFieldLabel` style can be fully customized
+The `NumberFieldLabel` style can be fully customized. The label can be located at the top or left, the default is the top. You can also customize it as needed
 
 ```tsx
 <NumberField label='Amount'>
@@ -515,7 +515,7 @@ You can fully customize the button style and its children.
 
 ### Position
 
-`btnPosition` has two values, one is `inside`, which is the default value, and the other is `outside`
+`btnPosition` has two values, one is `inside`, which is the default value, and the other is `outside`. You can also customize it as needed
 
 ```tsx
 <NumberField btnPosition='outside'>
