@@ -1,4 +1,4 @@
-# Anatomy of number-field
+# Anatomy of NumberField
 
 The NumberField component is a flexible and accessible input field for numerical values, built with React and integrated with shadcn/ui. It offers customizable increment and decrement buttons, supports various layouts, and includes built-in error handling and validation. This component is designed to be highly adaptable, making it suitable for a wide range of applications where numerical input is required.
 
